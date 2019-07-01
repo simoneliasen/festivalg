@@ -12,3 +12,4 @@ Summer project 2019, with an emphasis on learning following technologies:
 - Javascript
 - Datastructures
 - Relational Databases Mysql
+- Skeleton CSS framework
