@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2> Oversigter over festivaller </h2>
+
+    {% for festival in festivals %}
+<div class="festival">
+      <p>{{ festival.name }}</p>
+      <p>{{ festival.description }}</p>
+      <p>{{ festival.price }} </p>
+      <p>{{ festival.location }}</p>
+</div>
+    {% endfor %}
+
+    <a href="home"> Tilbage til forsiden </a>
+{% endblock content %}

@@ -1,0 +1,10 @@
+body {
+  background: #2ecc71;
+  color: white;
+  margin-top: 5rem;
+}
+
+.festival, .artist {
+  margin: 5px;
+  border: 2px solid white;
+}
