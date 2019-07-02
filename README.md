@@ -1,7 +1,7 @@
 # festivalg
 Search engine for danish festivals, and the artists playing there
 
-Summer project 2019, with an emphasis on learning following technologies:
+Summer project 2019, with an emphasis on practising the following technologies:
 - Python
 - Python OOP
 - Flask
