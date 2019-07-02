@@ -2,7 +2,7 @@
 from flask import Flask, render_template, url_for
 app = Flask(__name__)
 
-#festivals Class
+#Festival Class
 class festival:
     def __init__(self, name, description, price, location, date, artists, weather, genre, youtube_showreel,):
         self.name = name #Manual
@@ -11,6 +11,7 @@ class festival:
         self.location = location #Manual
         self.date = date #Manual
         self.artists = artists #Nested artist objects
+        self.new_artists = new_artists #difference from old scrape to new scrape
         self.weather = weather #Weather API
         self.genre = genre #Manual
         self.youtube_showreel = youtube_showreel #Manual
