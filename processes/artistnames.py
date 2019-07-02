@@ -15,15 +15,15 @@ from bs4 import BeautifulSoup
 soup = BeautifulSoup(c, 'xml')
 samples = soup.find_all("a", "name")
 
-# Prints all artists in list (removes white space)
-for artist in samples:
-    print(list(artist.stripped_strings)[0])
-
 # Check for lenght throw error if empty?? made by echo (i don't get this)
+# x = list(artist.stripped_strings)
+# if x:
+#     print(x[0])
+
+# Convert artist names into a list
+artist_names = []
 for artist in samples:
-x = list(artist.stripped_strings)
-if x:
-    print(x[0])
+    artist_names.append(list(artist.stripped_strings)[0]) #adds stripped strings to list
 
 #Insert list of elements into Sql database
 import mysql.connector
@@ -35,12 +35,11 @@ mydb = mysql.connector.connect(
   passwd="",
   database="festivalg"
 )
-
 mycursor = mydb.cursor()
 
 # Add sql query and values
 sql = "INSERT INTO roskildeartists (name) VALUES (%s)"
-
-mycursor.executemany(sql, ??) #How to put entire list into db?
+#How to add items as unique rows?
+mycursor.executemany(sql, artist_names[2]) #How to put entire list into db?
 
 mydb.commit()
