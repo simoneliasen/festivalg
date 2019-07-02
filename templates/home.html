@@ -1,9 +1,24 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<h2> Det her er forsiden  </h2>
+<div class="container">
 
-<a href="artist"> Artist side </a>
+<!-- Logo + appetizer -->
+<h1 id="logo"> Festivalg </h1>
+<h2> Find solbrillerne og shortsne frem, vi skal på festival! </h2>
+
+<!-- Search form -->
+<form action="/action_page.php">
+     <input type="text" placeholder="Search.." name="search">
+     <button type="submit"><i class="fa fa-search"></i></button>
+   </form>
+
+<!-- Informative text -->
+<p> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p>
+
+<!--  -->
+<a href="artist"> Artist side </a> &nbsp; &nbsp; &nbsp; &nbsp;
 <a href="festival">Festival side </a>
+</div>
 
 {% endblock content %}

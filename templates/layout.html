@@ -4,23 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- url_for for serving static files as css and js -->
+  <!-- Custom css-->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+  <!-- Skeleton predefined CSS -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='skeleton.css') }}">
-
-    <!-- If title is declared, insert it after Flask-blog else = flask blog -->
-    {% if title %}
-    <title>Festivalg -  {{ title }}</title>
-    {% else %}
-      <title>Festivalg</title>
-    {% endif %}
-
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Fonts  -->
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <!-- If title is declared, insert after name (ex. festivalg - artists -->
+  {% if title %}
+  <title>Festivalg -  {{ title }}</title>
+  {% else %}
+  <title>Festivalg</title>
+  {% endif %}
 </head>
-
 <body>
-  <div class="container">
+
+<!-- Individual content for pages here -->
 {% block content %}{% endblock %}
-</div>
+
 </body>
 </html>

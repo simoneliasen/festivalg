@@ -1,7 +1,21 @@
+/* INDEX OF STYLESHEET */
+/* 1. GENERAL */
+/* 2. FRONT PAGE */
+/* 3. ARTIST PAGE */
+/* 4. FESTIVAL PAGE */
+
+/* 1. GENERAL */
 body {
-  background: #2ecc71;
-  color: white;
-  margin-top: 5rem;
+  background: #FFD96F;
+  color: #4DAEA1;
+}
+
+/* 2. FRONT PAGE */
+#logo {
+  margin-top: 25%;
+  font-family: 'Lato', sans-serif;
+  color: #4DAEA1;
+  font-size: 70px;
 }
 
 .festival, .artist {
