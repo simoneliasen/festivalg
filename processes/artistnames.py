@@ -35,11 +35,12 @@ mydb = mysql.connector.connect(
   passwd="",
   database="festivalg"
 )
+
 mycursor = mydb.cursor()
 
 # Add sql query and values
 sql = "INSERT INTO roskildeartists (name) VALUES (%s)"
-#How to add items as unique rows?
-mycursor.executemany(sql, artist_names[2]) #How to put entire list into db?
+
+mycursor.executemany(sql, artist_names[0]) #How to put entire list into db?
 
 mydb.commit()
