@@ -2,6 +2,29 @@
 from flask import Flask, render_template, url_for
 app = Flask(__name__)
 
+#festivals Class
+class festival:
+    def __init__(self, name, description, price, location, date, artists, weather, genre, youtube_showreel,):
+        self.name = name #Manual
+        self.description = description #Manual
+        self.price = price #Manual (add buy link?)
+        self.location = location #Manual
+        self.date = date #Manual
+        self.artists = artists #Nested artist objects
+        self.weather = weather #Weather API
+        self.genre = genre #Manual
+        self.youtube_showreel = youtube_showreel #Manual
+
+# artists class
+class artist:
+    def __init__(self, name, image, genre, description, country, festival, top_tracks,):
+        self.name = name #Webscrape festival site
+        self.image = image #SpotifyAPI
+        self.genre = genre #SpotifyAPI
+        self.description = description #SpotifyAPI (maybe not avaliable?)
+        self.country = country #SpotifyAPi
+        self.festival = festival #Parent Class
+        self.top_tracks = top_tracks #SpotifyApi
 
 festivals = [
     {
