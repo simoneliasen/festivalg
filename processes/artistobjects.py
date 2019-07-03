@@ -37,7 +37,7 @@ results = spotify.search(q='artist:' + name, type='artist')
 items = results['artists']['items']
 if len(items) > 0:
     artist = items[0]
-    artist_object_data = list(([artist['name']], [artist['images'][0]['url']], [artist['external_urls']], artist['genres']))
+    artist_object_data = list(([artist['name']], [artist['images'][0]['url']], [artist['external_urls']['spotify']], artist['genres']))
     print(repr(artist_object_data))
 
 
