@@ -15,11 +15,6 @@ from bs4 import BeautifulSoup
 soup = BeautifulSoup(c, 'xml')
 samples = soup.find_all("a", "name")
 
-# Check for lenght throw error if empty?? made by echo (i don't get this)
-# x = list(artist.stripped_strings)
-# if x:
-#     print(x[0])
-
 # Convert artist names into a list
 artist_names = []
 for artist in samples:
@@ -38,9 +33,15 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-# Add sql query and values
 sql = "INSERT INTO roskildeartists (name) VALUES (%s)"
 
-mycursor.executemany(sql, artist_names[0]) #How to put entire list into db?
+mycursor.executemany(sql, [[name] for name in artist_names]) #Puts list into db, with each element being own list
 
 mydb.commit()
+
+
+
+# Check for lenght throw error if empty?? made by echo (i don't get this)
+# x = list(artist.stripped_strings)
+# if x:
+#     print(x[0])
