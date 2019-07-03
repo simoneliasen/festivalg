@@ -10,13 +10,11 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-
-mycursor.execute("SELECT * FROM roskildeartists WHERE name = 'ALKYMIST' LIMIT 1") #Puts list into db, with each element being own list
-
+mycursor.execute("SELECT * FROM roskildeartists LIMIT 1") #Selects first item from table (w. name alkymist)
 myresult = mycursor.fetchall() #Fetch all elements from Mysql Database
 
 for x in myresult: #For elements in results (insert element i query)
-  print(repr(x))
+  print(repr(x)) #This element should be put into "name" in spotipy
 
 #Import spotipy components
 import spotipy
@@ -31,7 +29,7 @@ spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 if len(sys.argv) > 1:
     name = ' '.join(sys.argv[1:])
 else:
-    name = 'ALKYMIST'
+    name = str(x) #Insert SQL query result here
 
 results = spotify.search(q='artist:' + name, type='artist')
 items = results['artists']['items']
