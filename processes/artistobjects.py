@@ -13,10 +13,11 @@ mycursor = mydb.cursor()
 mycursor.execute("SELECT * FROM roskildeartists LIMIT 1") #Selects first item from table (w. name alkymist)
 myresult = mycursor.fetchall() #Fetch all elements from Mysql Database
 
-for x in myresult: #For elements in results (insert element i query)
-  print(repr(x)) #This element should be put into "name" in spotipy
+#For element in result (Inserted in SpotifyApi query further down)
+for artist in myresult:
+  print(repr(artist)) #This element should be put into "name" in spotipy
 
-#Import spotipy components
+#Import libraries for spotipy
 import spotipy
 import sys
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -25,65 +26,49 @@ from spotipy.oauth2 import SpotifyClientCredentials
 client_credentials_manager = SpotifyClientCredentials(client_id='1fc1953f35974811bb2511e360dd422b', client_secret='172b85d4d592449f9268ab7285598088')
 spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-#Get album Image from artist = ALKYMIST (test)
+#Get album data from first row in table (test)
 if len(sys.argv) > 1:
     name = ' '.join(sys.argv[1:])
 else:
-    name = str(x) #Insert SQL query result here
+    name = str(artist) #Inserts SQL query result here
 
+#Search spotify with query (q) with artist name, and retrieves name,image,uri,genres in list
 results = spotify.search(q='artist:' + name, type='artist')
 items = results['artists']['items']
 if len(items) > 0:
     artist = items[0]
-    print (artist['name'], artist['images'][0]['url'])
+    artist_object_data = list(([artist['name']], [artist['images'][0]['url']], [artist['external_urls']], artist['genres']))
+    print(repr(artist_object_data))
 
 
-#API Parameters
-#artist(artist_id) #returns a single artist given the artist’s ID, URI or URL
-#categories(country=None, locale=None, limit=20, offset=0) #Get artist country
+#INSERT DATA INTO TABLE (INSERT / UPDATE DATA) (QUERY)
+    #Overwrite name (UPDATE) (makes it case-sensitive)
+    #Insert image (INSERT)
+    #Insert external url (INSERT)
+    #Insert genres (INSERT)
 
-# Data we want from artist name (creates artist object)
-#- image (spotify API) (achievable)
-#- description (spotifyAPI) (maybe not avaliable)
-#- country (spotifyAPI) (achievable)
-#- genre(spotifyAPI) (achievable)
-#- toptracks(spotifyAPI) (achievable)
-#- festivalplayingat(ParentClassFestival)
+#FURTHER FEATURES TO IMPLEMENT
+    #Get artist top tracks (requires user authentication)
+    #get artist Festival (Look at sql table(or column in table) where name was taken from)
 
-#Where to store artist object? semi permanently?
-#Daily api gets? or every user request?
-#What to do if data is not avaliable? (what if no spotify?) (what if no description?)
+# ISSUES
+    #Only retrieve value from external_urls
+    #IF NO SPOTIFY LINK EXSIST DO: ??
+    #DON't STORE DATA IF VALUES ALREADY EXSIST
 
-# #Get image URL of artist
-# import spotipy
-# import sys
-#
-# spotify = spotipy.Spotify()
-#
-# if len(sys.argv) > 1:
-#     name = ' '.join(sys.argv[1:])
-# else:
-#     name = 'Radiohead'
-#
-# results = spotify.search(q='artist:' + name, type='artist')
-# items = results['artists']['items']
-#
-# if len(items) > 0:
-#     artist = items[0]
-#     print artist['name'], artist['images'][0]['url']
-#
-#
-# # Get top 10 tracks from artist
-# import spotipy
-#
-# lz_uri = 'spotify:artist:36QJpDe2go2KgaRleHCDTp'
+#SNIPPET FOR TOPTRACKS (NEEDS AUTHENTICATION)
+#Converts URL to string, for making request for top tracks further down
+# for i in artist_object_data[2]:
+#     print(i, end="")
+
+
+# lz_uri = str(artist_object_data[2]) #Insert query found in Earlier API Request
 #
 # spotify = spotipy.Spotify()
 # results = spotify.artist_top_tracks(lz_uri)
 #
 # for track in results['tracks'][:10]:
-# print 'track : ' + track['name']
-#     print 'track : ' + track['name']
-#     print 'audio : ' + track['preview_url']
-#     print 'cover art: ' + track['album']['images'][0]['url']
-#     print
+#     print('track : ' + track['name'])
+#     print('track : ' + track['name'])
+#     print('audio : ' + track['preview_url'])
+#     print('cover art: ' + track['album']['images'][0]['url'])
