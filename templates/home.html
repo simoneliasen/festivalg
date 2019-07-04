@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-<script src="static/autocomplete.js"></script>
 
 <div class="container">
 
@@ -17,27 +16,26 @@
    </form>
 </center>
 
+<!-- Javascript autocomplete -->
+<script src="static/autocomplete.js"></script>
 
 <!-- Informative text -->
 <center><p id="subsubtext"> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p></center>
 
-
 </div>
+
+<!-- Popular festivals section -->
 <div class="festivalswrapper">
-<h2 id="oversigtoverskrift"> Populære festivaller </h2>
-<div class="popularfestivals">
-
-
-  <script src="static/autocomplete.js"></script>
-
-    <img src="/static/roskilde.png" height="auto" width="100px">
-    <img src="/static/northside.png" height="auto" width="200px">
-    <img src="/static/tinderbox.png" height="auto" width="250px">
-    <img src="/static/smukfest.png" height="auto" width="100px">
-    <img src="/static/skive.png" height="auto" width="100px">
-    <img src="/static/groen.png" height="auto" width="100px">
-    <img src="/static/distortion.png" height="auto" width="100px">
-    <img src="/static/spot.png" height="auto" width="100px">
-
+  <h2 id="oversigtoverskrift"> Populære festivaller </h2>
+  <div class="popularfestivals">
+    <img src="/static/img/roskilde.png" height="auto" width="100px">
+    <img src="/static/img/northside.png" height="auto" width="200px">
+    <img src="/static/img/tinderbox.png" height="auto" width="250px">
+    <img src="/static/img/smukfest.png" height="auto" width="100px">
+    <img src="/static/img/skive.png" height="auto" width="100px">
+    <img src="/static/img/groen.png" height="auto" width="100px">
+    <img src="/static/img/distortion.png" height="auto" width="100px">
+    <img src="/static/img/spot.png" height="auto" width="100px">
+  </div>
 </div>
 {% endblock content %}
