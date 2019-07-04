@@ -1,6 +1,7 @@
 /* INDEX OF STYLESHEET */
 /* 1. GENERAL */
 /* 2. FRONT PAGE */
+/* 2.1. SEARCH AUTOCOMPLETE */
 /* 3. ARTIST PAGE */
 /* 4. FESTIVAL PAGE */
 
@@ -110,3 +111,6 @@ button:hover {
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
+
+
+/* CLEAN UP */

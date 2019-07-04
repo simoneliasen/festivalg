@@ -101,3 +101,6 @@ var countries = ["You da mann","you wizard harry","yuuuuuu","Andorra","Angola","
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), countries);
+
+// TO DO:
+// INSERT DATABASE as current Countries array variable
