@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<script src="static/autocomplete.js"></script>
 
 <div class="container">
 
@@ -9,11 +10,14 @@
 
 <!-- Search form -->
 <center>
-  <form action="/action_page.php">
-     <input type="text" placeholder="Search.." name="search">
+  <form autocomplete="off" action="/action_page.php">
+    <div class="autocomplete">
+     <input id="myInput" type="text" placeholder="Search.." name="search">
      <button type="submit"><i class="fa fa-search"></i></button>
    </form>
 </center>
+
+
 <!-- Informative text -->
 <center><p id="subsubtext"> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p></center>
 
@@ -22,6 +26,9 @@
 <div class="festivalswrapper">
 <h2 id="oversigtoverskrift"> Populære festivaller </h2>
 <div class="popularfestivals">
+
+
+  <script src="static/autocomplete.js"></script>
 
     <img src="/static/roskilde.png" height="auto" width="100px">
     <img src="/static/northside.png" height="auto" width="200px">
