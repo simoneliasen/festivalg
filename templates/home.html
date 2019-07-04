@@ -11,18 +11,29 @@
 <center>
   <form autocomplete="off" action="/action_page.php">
     <div class="autocomplete">
-     <input id="myInput" type="text" placeholder="Search.." name="search">
+     <input id="myInput" type="text" placeholder="Søg efter festival eller kunstner.." name="search">
      <button type="submit"><i class="fa fa-search"></i></button>
    </form>
 </center>
 
-<!-- Javascript autocomplete -->
-<script src="static/autocomplete.js"></script>
+<!-- Import name from sql column from sql to insert into autocomplete,
+convert to json
+convert to javascript  -->
 
-<!-- Informative text -->
+
+
+<!-- Javascript autocomplete function -->
+<script src="static/autocomplete.js"></script>
+<script>
+/*An array containing all the festival names*/
+var festivals = ["Roskilde festival","Northside","Skive Festival","Distortion","Grøn koncert","Tinderbox","Smukfest","SPOT festival"];
+/*Function that executes autocomplete feature */
+autocomplete(document.getElementById("myInput"), festivals);
+</script>
+
 <center><p id="subsubtext"> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p></center>
 
-</div>
+</div> <!-- Container wrapper end -->
 
 <!-- Popular festivals section -->
 <div class="festivalswrapper">
