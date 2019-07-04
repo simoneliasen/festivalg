@@ -58,3 +58,23 @@ mydb.commit()
 
 #ISSUES
 #1. What to do if not on spotify?
+
+
+
+
+#SNIPPET FOR TOPTRACKS (NEEDS AUTHENTICATION)
+#Converts URL to string, for making request for top tracks further down
+# for i in artist_object_data[2]:
+#     print(i, end="")
+
+
+# lz_uri = str(artist_object_data[2]) #Insert query found in Earlier API Request
+#
+# spotify = spotipy.Spotify()
+# results = spotify.artist_top_tracks(lz_uri)
+#
+# for track in results['tracks'][:10]:
+#     print('track : ' + track['name'])
+#     print('track : ' + track['name'])
+#     print('audio : ' + track['preview_url'])
+#     print('cover art: ' + track['album']['images'][0]['url'])

@@ -25,11 +25,8 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-
 sql = "INSERT INTO roskildeartists (name) VALUES (%s)"
-
 mycursor.executemany(sql, [[name] for name in artist_names]) #Puts list into db, with each element being own list
-
 mydb.commit()
 
 # Check for lenght throw error if empty?? made by echo (i don't get this)
