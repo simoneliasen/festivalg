@@ -1,4 +1,4 @@
-#Webscraper for Roskilde Festival
+#Import Libraries
 import mysql.connector #Import Mysql library
 import requests #Import Requests Library
 from bs4 import BeautifulSoup
@@ -8,13 +8,11 @@ from spotipy.oauth2 import SpotifyClientCredentials
 
 #Webscraper: Roskilde Festival
 result = requests.get("https://www.roskilde-festival.dk/en/line-up/") #Select page to scrape
-# Store content in accesible variable
 c = result.content
-# Start parsing data with Beautifoulsoup
 soup = BeautifulSoup(c, 'xml')
 samples = soup.find_all("a", "name")
 
-# Artist List creation (data cleanup)
+# List of artists (data cleanup from webscrape)
 artist_names = []
 for artist in samples:
     artist_names.append(list(artist.stripped_strings)[0]) #adds stripped strings to list
@@ -23,13 +21,12 @@ for artist in samples:
 client_credentials_manager = SpotifyClientCredentials(client_id='1fc1953f35974811bb2511e360dd422b', client_secret='172b85d4d592449f9268ab7285598088')
 spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-#Get album data from first row in table (test)
+#Search spotify with query (q) with artist name, and retrieves name,image,url as tuple
 if len(sys.argv) > 1:
     name = ' '.join(sys.argv[1:])
 else:
     name = str(artist_names[0]) #Inserts first item in scraped artist list (test)
 
-#Search spotify with query (q) with artist name, and retrieves name,image,url,genres in list
 results = spotify.search(q='artist:' + name, type='artist')
 items = results['artists']['items']
 if len(items) > 0:
