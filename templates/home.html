@@ -5,20 +5,32 @@
 
 <!-- Logo + appetizer -->
 <h1 id="logo"> Festivalg </h1>
-<h2> Find solbrillerne og shortsne frem, vi skal på festival! </h2>
+<center><h2 id="subtext"> Find solbrillerne og shortsne frem, vi skal på festival! </h2></center>
 
 <!-- Search form -->
-<form action="/action_page.php">
+<center>
+  <form action="/action_page.php">
      <input type="text" placeholder="Search.." name="search">
      <button type="submit"><i class="fa fa-search"></i></button>
    </form>
-
+</center>
 <!-- Informative text -->
-<p> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p>
+<center><p id="subsubtext"> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p></center>
 
-<!--  -->
-<a href="artist"> Artist side </a> &nbsp; &nbsp; &nbsp; &nbsp;
-<a href="festival">Festival side </a>
+
 </div>
+<div class="festivalswrapper">
+<h2 id="oversigtoverskrift"> Populære festivaller </h2>
+<div class="popularfestivals">
 
+    <img src="/static/roskilde.png" height="auto" width="100px">
+    <img src="/static/northside.png" height="auto" width="200px">
+    <img src="/static/tinderbox.png" height="auto" width="250px">
+    <img src="/static/smukfest.png" height="auto" width="100px">
+    <img src="/static/skive.png" height="auto" width="100px">
+    <img src="/static/groen.png" height="auto" width="100px">
+    <img src="/static/distortion.png" height="auto" width="100px">
+    <img src="/static/spot.png" height="auto" width="100px">
+
+</div>
 {% endblock content %}
