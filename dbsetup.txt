@@ -1,0 +1,7 @@
+CREATE TABLE roskildefestival (
+    ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name varchar(255),
+    image varchar(255),
+    url varchar(255),
+    festival varchar(255)
+);
