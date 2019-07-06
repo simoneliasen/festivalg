@@ -57,8 +57,6 @@ mydb.commit()
 #1. What to do if not on spotify?
 
 
-
-
 #SNIPPET FOR TOPTRACKS (NEEDS AUTHENTICATION)
 #Converts URL to string, for making request for top tracks further down
 # for i in artist_object_data[2]:
