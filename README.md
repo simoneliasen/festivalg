@@ -6,7 +6,6 @@ Summer project 2019, with an emphasis on practising the following technologies:
 - Python OOP
 - Flask
 - Webscraping
-- Request library
 - BeautifulSoup
 - CI/CD
 - Javascript
