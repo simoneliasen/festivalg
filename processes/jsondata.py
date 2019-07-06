@@ -8,29 +8,16 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-mycursor.execute("SELECT name FROM roskildefestival")
+mycursor.execute("SELECT GROUP_CONCAT(name) FROM roskildefestival")
 myresult = mycursor.fetchall()
 for x in myresult:
     print(x)
 
-o = [i for (i) in myresult]
-print(o)
-#
-import json
-
-jsonObj = json.dumps(o)
-
-print(jsonObj)
-
-#
-# type(jsonObj)
-# #
-# # [list (i) for i in myresult]
-#
-# x = [i for i in myresult]
-#
-# print(x)
+# import json
+# jsonObj = json.dumps(myresult)
+# print(jsonObj)
 
 
-
-#List comprehension
+# for x in myresult:
+#     print(x)
+# print(myresult)
