@@ -5,7 +5,7 @@
     {% for artist in artists %}
 <div class="artist">
       <p>{{ artist.name }}</p>
-      <p>{{ artist.description }}</p>
+      <p><img src="{{ artist.image }}" width="250px"></p>
       <p>{{ artist.country }} </p>
       <p>{{ artist.genre }}</p>
       <p>{{ artist.toptracks }}</p>

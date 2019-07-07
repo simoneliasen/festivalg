@@ -27,6 +27,22 @@ class artist:
         self.festival = festival #Parent Class
         self.top_tracks = top_tracks #SpotifyApi
 
+# Connecting with database to deliver search options
+import mysql.connector
+import json
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="",
+  database="festivalg"
+)
+
+cur = mydb.cursor()
+cur.execute("SELECT name FROM roskildefestival")
+result_list = [row[0] for row in cur.fetchall()]
+roskildeartists = (json.dumps(result_list))
+
 festivals = [
     {
         'name': 'Roskilde Festival',
@@ -52,8 +68,8 @@ festivals = [
 
 artists = [
     {
-        'name': 'Asap Rocky Impala',
-        'description': 'very cool',
+        'name': 'Asap Rocky',
+        'image': 'https://i.scdn.co/image/6d869bf0d56329a00bece664e8cd9f92e4fa83d7',
         'country': 'Norway',
         'genre': 'Hiphop',
         'toptracks': 'toptracks here',
@@ -61,7 +77,7 @@ artists = [
     },
     {
         'name': 'Tame Impala',
-        'description': 'good stuff',
+        'image': 'https://i.scdn.co/image/6d869bf0d56329a00bece664e8cd9f92e4fa83d7',
         'country': 'Denmark',
         'genre': 'Pop',
         'toptracks': 'toptracks here',
@@ -72,7 +88,7 @@ artists = [
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', festivals=festivals)
+    return render_template('home.html', festivals=festivals, roskildeartists=roskildeartists)
 
 @app.route("/festival")
 def festival():
