@@ -1,4 +1,5 @@
 import mysql.connector
+import json
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -7,11 +8,25 @@ mydb = mysql.connector.connect(
   database="festivalg"
 )
 
-mycursor = mydb.cursor()
-mycursor.execute("SELECT GROUP_CONCAT(name) FROM roskildefestival")
-myresult = mycursor.fetchall()
-for x in myresult:
+cur = mydb.cursor()
+cur.execute("SELECT name FROM roskildefestival")
+result_list = [row[0] for row in cur.fetchall()]
+for x in result_list:
     print(x)
+
+roskildeartists = (json.dumps(result_list))
+
+print(roskildeartists)
+
+# newlist = []
+# for i in myresult:
+#     newlist.append(i)
+#
+# print (newlist)
+#
+# print(newlist[1])
+# newlist.append(x)
+#     print(newlist)
 
 # import json
 # jsonObj = json.dumps(myresult)
