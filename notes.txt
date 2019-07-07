@@ -1,5 +1,5 @@
 1. See flask documentation + corey schafer videos for structure
-2. JSON -> javascript variable in home.html (search for listings in actual database)
+2. JSON -> javascript variable in home.html (search for listings in actual database) (retrieve entire items instead of charachters)
 3. Turn scrape -> spotify object into for loop, to get all entries
 4. Give results for when searched on artist
 5. Set up img, and other data
