@@ -1,3 +1,11 @@
+Look at flask documentation github
++ corey shafer github
+
+use flask more efficiently
+
+
+
+
 1. See flask documentation + corey schafer videos for structure
 2. JSON -> javascript variable in home.html (search for listings in actual database) (retrieve entire items instead of charachters)
 3. Turn scrape -> spotify object into for loop, to get all entries
