@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- center content within the middle -->
 <div class="container">
 
 <!-- Logo + appetizer -->
@@ -18,16 +19,14 @@
 
 <!-- Autocompletes form text to artist names  -->
 <script src="static/autocomplete.js"></script>
-
-<script>
+<script type="">
 // Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
-var festivals = {{ roskildeartists|safe }};
-
-
+var artists = {{ roskildeartists|safe }};
 /*Function that executes autocomplete feature */
-autocomplete(document.getElementById("myInput"), festivals);
+autocomplete(document.getElementById("myInput"), artists);
 </script>
 
+<!-- more explaining text of function -->
 <center><p id="subsubtext"> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p></center>
 
 </div> <!-- Container wrapper end -->
@@ -46,4 +45,5 @@ autocomplete(document.getElementById("myInput"), festivals);
     <img src="/static/img/spot.png" height="auto" width="100px">
   </div>
 </div>
+
 {% endblock content %}
