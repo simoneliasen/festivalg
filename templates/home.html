@@ -16,24 +16,13 @@
    </form>
 </center>
 
-<!-- Import name from sql column from sql to insert into autocomplete,
-convert to json
-convert to javascript  -->
-<!-- {% print(roskildeartists) %}
-
-#PYTHON JSON-ARRAY
-roskildeartists = ["artist1", "artist2", "artist3", "artist4", "artist5", "artist6",]
-
-
-<!-- Javascript autocomplete function -->
+<!-- Autocompletes form text to artist names  -->
 <script src="static/autocomplete.js"></script>
+
 <script>
+// Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
+var festivals = {{ roskildeartists|safe }};
 
-
-// Javascript array, where i want the above data inserted in
-// var festivals = ["Roskilde festival","Northside","Skive Festival","Distortion","Grøn koncert","Tinderbox","Smukfest","SPOT festival"];
-
-var festivals = {{ roskildeartists|tojson|safe }};
 
 /*Function that executes autocomplete feature */
 autocomplete(document.getElementById("myInput"), festivals);
