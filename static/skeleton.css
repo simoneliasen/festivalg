@@ -339,12 +339,12 @@ td:last-child {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 button,
 .button {
-  margin-bottom: 1rem; }
+  /* margin-bottom: 1rem; } REMOVED TO GET DROPDOWN SEARCHBAR ON FRONTPAGE */
 input,
 textarea,
 select,
 fieldset {
-  margin-bottom: 1.5rem; }
+  /* margin-bottom: 1.5rem; }  REMOVED TO GET DROPDOWN SEARCHBAR ON FRONTPAGE*/
 pre,
 blockquote,
 dl,
