@@ -1,18 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
 <center><h2> Oversigter over kunstnere </h2></center>
+<center>
+  <br>
 <div class="container">
     {% for artist in artists %}
-<div class="artist">
-      <p>{{ artist.name }}</p>
+<div class="artists">
       <p><img src="{{ artist.image }}" width="250px"></p>
+      <p><b> {{ artist.name }} </b></p>
       <p>{{ artist.country }} </p>
-      <p>{{ artist.genre }}</p>
-      <p>{{ artist.toptracks }}</p>
-      <p>{{ artist.festival }}</p>
+      <p>{{ artist.genre }} </p>
+      <p>{{ artist.toptracks }} </p>
+      <p>{{ artist.festival }} </p>
 </div>
     {% endfor %}
 
-    <a href="home"> Tilbage til forsiden </a>
+    <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
 </div>
+<center>
 {% endblock content %}

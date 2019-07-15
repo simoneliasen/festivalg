@@ -10,30 +10,40 @@
 
 <!-- Search form -->
 <center>
-  <form autocomplete="off" action="/action_page.php">
+  <form autocomplete="off" action="{{ url_for('artist') }}" method="post">
     <div class="autocomplete">
      <input id="myInput" type="text" placeholder="Søg efter festival eller kunstner.." name="search">
-     <button type="submit"><i class="fa fa-search"></i></button>
+     <button type="submit" id="myBtn"><i class="fa fa-search"></i></button>
    </form>
 </center>
 
-<!-- Autocompletes form text to artist names  -->
+<!-- Import autocomplete js code  -->
 <script src="static/autocomplete.js"></script>
-<script type="">
-// Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
-var artists = {{ roskildeartists|safe }};
-/*Function that executes autocomplete feature */
-autocomplete(document.getElementById("myInput"), artists);
+
+<!-- load artist data from sql + executes js code -->
+<script>
+var artists = {{ roskildeartists|safe }}; // Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
+autocomplete(document.getElementById("myInput"), artists); /*Function that executes autocomplete feature */
 </script>
 
-<br><br>
+<!-- Trigger search form on enter key -->
+<script>
+var input = document.getElementById("myInput");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("myBtn").click();
+  }
+});
+</script>
 
-<!-- more explaining text of function -->
+<br>
+
 <center><p id="subsubtext"> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p></center>
 
 <br><br>
 
-</div> <!-- Container wrapper end -->
+</div>
 
 <!-- Popular festivals section -->
 <center>
