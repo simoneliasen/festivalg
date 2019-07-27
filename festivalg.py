@@ -5,20 +5,6 @@ import json
 
 app = Flask(__name__)
 
-#Festival Class
-# class festival:
-#     def __init__(self, name, description, price, location, date, artists, weather, genre, youtube_showreel,):
-#         self.name = name #Manual
-#         self.description = description #Manual
-#         self.price = price #Manual (add buy link?)
-#         self.location = location #Manual
-#         self.date = date #Manual
-#         self.artists = artists #Nested artist objects
-#         self.new_artists = new_artists #difference from old scrape to new scrape
-#         self.weather = weather #Weather API
-#         self.genre = genre #Manual
-#         self.youtube_showreel = youtube_showreel #Manual
-
 # artists class
 # class artist:
 #     def __init__(self, name, image, genre, description, country, festival, top_tracks,):
@@ -43,19 +29,6 @@ cur.execute("SELECT name FROM roskildefestival")
 result_list = [row[0] for row in cur.fetchall()]
 roskildeartists = (json.dumps(result_list))
 
-
-festivals = [
-    {
-        'name': 'Roskilde Festival',
-        'price': '2900',
-        'description': 'Very good festival',
-        'location': 'Roskilde',
-        'weather': 'Sunny',
-        'artists': 'many',
-        'genre': 'Everything',
-        'date': 'April 20, 2018'
-    }
-]
 
 artists = [
     {
@@ -91,13 +64,6 @@ def artist():
     else:
         artists = request.form.get("search")
         return render_template("artist.html", artists=artists)
-
-
-
-#Search route festival
-@app.route("/festival")
-def festival():
-    return render_template('festival.html', title='Festival', festivals=festivals)
 
 # @app.route("/artist")
 # def artist():
