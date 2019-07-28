@@ -32,7 +32,7 @@ def artist():
               return "Please submit the form instead."
     else:
         #Input from form
-        search_input = request.form['search']
+        search_input = request.form.get("search")
         #Use data from database
         cur = mydb.cursor()
         cur.execute("SELECT * FROM roskildefestival")
