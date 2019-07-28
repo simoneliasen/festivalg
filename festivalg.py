@@ -35,7 +35,7 @@ def artist():
         search_input = request.form.get("search")
         #Use data from database
         cur = mydb.cursor()
-        cur.execute("SELECT * FROM roskildefestival")
+        cur.execute("SELECT * FROM roskildefestival WHERE name = %s", (search_input,))
         artist_data = cur.fetchall()
         return render_template("artist.html", search_input = search_input, artist_data = artist_data)
 
