@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- center content within the middle -->
+<!-- Center content within the middle -->
 <div class="container">
 
 <!-- Logo + appetizer -->
@@ -10,7 +10,7 @@
 
 <!-- Search form -->
 <center>
-  <form autocomplete="off" action="{{ url_for('artist') }}" method="post">
+  <form autocomplete="off" action="/artist" method="post">
     <div class="autocomplete">
      <input id="myInput" type="text" placeholder="Søg efter festival eller kunstner.." name="search">
      <button type="submit" id="myBtn"><i class="fa fa-search"></i></button>
