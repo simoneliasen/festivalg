@@ -1,28 +1,32 @@
 {% extends "layout.html" %}
 {% block content %}
-<center><h2> Oversigter over kunstnere </h2></center>
 <center>
   <br>
+  <br>
+  <br>
+  
 
 <div class="container">
 
 {% for info in artist_data %}
 
 <!-- Name -->
-<h2> {% print(info[1]) %} <h2>
-<br>
+<h2><b> {% print(info[1]) %} </b></h2>
 
 <!-- Image -->
-<img src="{% print(info[2]) %}">
+<img src="{% print(info[2]) %}" width="300px" height="300px">
 <br>
 
 <!-- Spotify URI -->
 <!-- Need to split info between url and /artist (add /embed )  -->
-{% print(info[3]) %}
-<iframe src="https://open.spotify.com/embed/artist/3stnxKpza4ha7gXKhQ4kHv" width="320" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-
+<!-- {% print(info[3]) %} -->
+<iframe src="https://open.spotify.com/embed/artist/3stnxKpza4ha7gXKhQ4kHv" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<br>
 <!-- Festival -->
-{% print(info[4]) %}
+<!-- {% print(info[4]) %} -->
+<br>
+<p> <b>Spiller på: </b></p>
+<p> Roskilde Festival </p>
 <br>
 <br>
 
