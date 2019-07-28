@@ -36,7 +36,7 @@ def artist():
         #Use data from database
         cur = mydb.cursor()
         cur.execute("SELECT * FROM roskildefestival")
-        artist_data = cur.fetchone()
+        artist_data = cur.fetchall()
         return render_template("artist.html", search_input = search_input, artist_data = artist_data)
 
 if __name__ == '__main__':
