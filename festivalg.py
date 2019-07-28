@@ -27,12 +27,17 @@ def home():
 
 # Artist page
 @app.route('/artist', methods=["GET", "POST"])
-def artist(): #If Attempt to GET is made, display error
+def artist():
     if request.method == "GET":
               return "Please submit the form instead."
-    else: # Takes input from searchbar to variable artist
-        artist = request.form['search']
-        return render_template("artist.html", artist = artist)
+    else:
+        #Input from form
+        search_input = request.form['search']
+        #Use data from database
+        cur = mydb.cursor()
+        cur.execute("SELECT * FROM roskildefestival")
+        artist_data = cur.fetchone()
+        return render_template("artist.html", search_input = search_input, artist_data = artist_data)
 
 if __name__ == '__main__':
     app.run(debug=True)

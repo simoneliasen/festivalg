@@ -4,11 +4,16 @@
 <center>
   <br>
 <div class="container">
-<!--  Display search input  -->
-<!-- add: Display values from mysql where name = artist -->
-<div class="artists">
-      <p> {{ artist }} </p>
-</div>
+
+
+<!-- Search input  -->
+<p> {{ search_input }} </p>
+
+<!-- result object -->
+<p> {{ artist_data }} </p>
+
+
+
     <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
 </div>
 <center>
