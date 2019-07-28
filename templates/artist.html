@@ -3,15 +3,30 @@
 <center><h2> Oversigter over kunstnere </h2></center>
 <center>
   <br>
+
 <div class="container">
 
+{% for info in artist_data %}
 
-<!-- Search input  -->
-<p> {{ search_input }} </p>
+<!-- Name -->
+<h2> {% print(info[1]) %} <h2>
+<br>
 
-<!-- result object -->
-<p> {{ artist_data }} </p>
+<!-- Image -->
+<img src="{% print(info[2]) %}">
+<br>
 
+<!-- Spotify URI -->
+<!-- Need to split info between url and /artist (add /embed )  -->
+{% print(info[3]) %}
+<iframe src="https://open.spotify.com/embed/artist/3stnxKpza4ha7gXKhQ4kHv" width="320" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+<!-- Festival -->
+{% print(info[4]) %}
+<br>
+<br>
+
+{% endfor %}
 
 
     <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
