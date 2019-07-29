@@ -21,6 +21,9 @@ for artist in samples:
 client_credentials_manager = SpotifyClientCredentials(client_id='1fc1953f35974811bb2511e360dd422b', client_secret='172b85d4d592449f9268ab7285598088')
 spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
+# For artist in artist_names:
+# Do the thingy below (Add entire data with spotify data)
+
 #Search spotify with query (q) with artist name, and retrieves name,image,url as tuple
 if len(sys.argv) > 1:
     name = ' '.join(sys.argv[1:])
