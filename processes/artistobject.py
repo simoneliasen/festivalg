@@ -6,6 +6,8 @@ import spotipy
 import sys
 from spotipy.oauth2 import SpotifyClientCredentials
 
+
+
 #Webscraper: Roskilde Festival
 result = requests.get("https://www.roskilde-festival.dk/en/line-up/") #Select page to scrape
 c = result.content
@@ -21,20 +23,20 @@ for artist in samples:
 client_credentials_manager = SpotifyClientCredentials(client_id='1fc1953f35974811bb2511e360dd422b', client_secret='172b85d4d592449f9268ab7285598088')
 spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-# For artist in artist_names:
-# Do the thingy below (Add entire data with spotify data)
+#Search spotify with query (q) from previous list of artists, and retrieves additional data
+for element in artist_names:
+    if len(sys.argv) > 1:
+        name = ' '.join(sys.argv[1:])
+    else:
+        name = element
+        results = spotify.search(q='artist:' + name, type='artist')
+        items = results['artists']['items']
+        if len(items) > 0:
+            artist = items[0]
+        artist_object_data = (((artist['name'], artist['external_urls'])))
 
-#Search spotify with query (q) with artist name, and retrieves name,image,url as tuple
-if len(sys.argv) > 1:
-    name = ' '.join(sys.argv[1:])
-else:
-    name = str(artist_names[0]) #Inserts first item in scraped artist list (test)
-
-results = spotify.search(q='artist:' + name, type='artist')
-items = results['artists']['items']
-if len(items) > 0:
-    artist = items[0]
-    artist_object_data = (((artist['name'], artist['images'][0]['url'], artist['external_urls']['spotify'] )))
+        print(type(artist_object_data[0]))
+        print(type(artist_object_data[1]['spotify']))
 
 # Database credentials
 mydb = mysql.connector.connect(
@@ -43,9 +45,10 @@ mydb = mysql.connector.connect(
   passwd="",
   database="festivalg"
 )
+
 #Insert Spotify  data into sql  table
 mycursor = mydb.cursor()
-mycursor.execute('INSERT INTO roskildefestival (name, image, url) VALUES (%s, %s, %s)', artist_object_data)
+mycursor.executemany('INSERT INTO roskildefestival (name, url) VALUES (%s, %s);', artist_object_data[0], artist_object_data[1]['spotify'])
 mydb.commit()
 
 
