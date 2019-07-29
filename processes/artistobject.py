@@ -48,16 +48,6 @@ mycursor = mydb.cursor()
 mycursor.execute('INSERT INTO roskildefestival (name, image, url) VALUES (%s, %s, %s)', artist_object_data)
 mydb.commit()
 
-#THINGS TO ADD/EDIT
-#1. Get more data (toptracks, genre, festival, description )
-#2. Insert all values into SQL
-#3. Check for duplicates (don't store duplicates)
-#4. If new artists, from last scrape, store as "new artists"
-#5. Set up daily scraping (1-2 times a day)
-#6. Add more festival scrapers
-
-#ISSUES
-#1. What to do if not on spotify?
 
 
 #SNIPPET FOR TOPTRACKS (NEEDS AUTHENTICATION)
