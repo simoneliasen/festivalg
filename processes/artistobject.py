@@ -6,8 +6,6 @@ import spotipy
 import sys
 from spotipy.oauth2 import SpotifyClientCredentials
 
-
-
 #Webscraper: Roskilde Festival
 result = requests.get("https://www.roskilde-festival.dk/en/line-up/") #Select page to scrape
 c = result.content
@@ -50,22 +48,3 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 mycursor.executemany('INSERT INTO roskildefestival (name, url) VALUES (%s, %s);', artist_object_data[0], artist_object_data[1]['spotify'])
 mydb.commit()
-
-
-
-#SNIPPET FOR TOPTRACKS (NEEDS AUTHENTICATION)
-#Converts URL to string, for making request for top tracks further down
-# for i in artist_object_data[2]:
-#     print(i, end="")
-
-
-# lz_uri = str(artist_object_data[2]) #Insert query found in Earlier API Request
-#
-# spotify = spotipy.Spotify()
-# results = spotify.artist_top_tracks(lz_uri)
-#
-# for track in results['tracks'][:10]:
-#     print('track : ' + track['name'])
-#     print('track : ' + track['name'])
-#     print('audio : ' + track['preview_url'])
-#     print('cover art: ' + track['album']['images'][0]['url'])
