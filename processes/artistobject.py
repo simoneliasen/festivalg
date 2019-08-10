@@ -55,3 +55,7 @@ mydb.commit()
 print(mycursor.rowcount, "was inserted.")
 
 
+# To do
+# 1. Get all artists, also those without img and spotify uri
+# 2. Check for doublants
+# 3. 3What to show if img isn't avaliable, uri isn't avaliable etc.
