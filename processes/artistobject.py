@@ -1,13 +1,12 @@
-#Import Libraries
-import mysql.connector #Import Mysql library
-import requests #Import Requests Library
+import mysql.connector 
+import requests 
 from bs4 import BeautifulSoup
 import spotipy
 import sys
 from spotipy.oauth2 import SpotifyClientCredentials
 
 #Webscraper: Roskilde Festival
-result = requests.get("https://www.roskilde-festival.dk/en/line-up/") #Select page to scrape
+result = requests.get("https://www.roskilde-festival.dk/en/line-up/") 
 c = result.content
 soup = BeautifulSoup(c, 'xml')
 samples = soup.find_all("a", "name")
@@ -21,6 +20,9 @@ for artist in samples:
 client_credentials_manager = SpotifyClientCredentials(client_id='1fc1953f35974811bb2511e360dd422b', client_secret='172b85d4d592449f9268ab7285598088')
 spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
+roskildefestival = []
+artists = []
+uri = []
 #Search spotify with query (q) from previous list of artists, and retrieves additional data
 for element in artist_names:
     if len(sys.argv) > 1:
@@ -32,19 +34,24 @@ for element in artist_names:
         if len(items) > 0:
             artist = items[0]
         artist_object_data = (((artist['name'], artist['external_urls'])))
+        artists.append(artist_object_data[0])
+        uri.append(artist_object_data[1]['spotify'])
+        
+roskildefestival = list(zip(artists,uri))
 
-        print(type(artist_object_data[0]))
-        print(type(artist_object_data[1]['spotify']))
 
 # Database credentials
 mydb = mysql.connector.connect(
-  host="localhost",
+  host="localhost",g
   user="root",
   passwd="",
   database="festivalg"
 )
 
-#Insert Spotify  data into sql  table
 mycursor = mydb.cursor()
-mycursor.executemany('INSERT INTO roskildefestival (name, url) VALUES (%s, %s);', artist_object_data[0], artist_object_data[1]['spotify'])
+sql = "INSERT INTO roskildefestival (name, url) VALUES (%s, %s)"
+mycursor.executemany(sql, roskildefestival)
 mydb.commit()
+print(mycursor.rowcount, "was inserted.")
+
+
