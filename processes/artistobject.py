@@ -20,10 +20,10 @@ for artist in samples:
 client_credentials_manager = SpotifyClientCredentials(client_id='1fc1953f35974811bb2511e360dd422b', client_secret='172b85d4d592449f9268ab7285598088')
 spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
+#Search spotify with query (q) from previous list of artists, and retrieves additional data
 roskildefestival = []
 artists = []
 uri = []
-#Search spotify with query (q) from previous list of artists, and retrieves additional data
 for element in artist_names:
     if len(sys.argv) > 1:
         name = ' '.join(sys.argv[1:])
@@ -35,27 +35,25 @@ for element in artist_names:
             artist = items[0]
         artist_object_data = (((artist['name'], artist['external_urls'])))
         artists.append(artist_object_data[0])
-        uri.append(artist_object_data[1]['spotify'])
-        
+        uri.append(artist_object_data[1]['spotify'])       
 roskildefestival = list(zip(artists,uri))
-
 
 # Database credentials
 mydb = mysql.connector.connect(
-  host="localhost",g
+  host="localhost",
   user="root",
   passwd="",
   database="festivalg"
 )
-
 mycursor = mydb.cursor()
 sql = "INSERT INTO roskildefestival (name, url) VALUES (%s, %s)"
 mycursor.executemany(sql, roskildefestival)
 mydb.commit()
 print(mycursor.rowcount, "was inserted.")
 
-
 # To do
-# 1. Get all artists, also those without img and spotify uri
-# 2. Check for doublants
-# 3. 3What to show if img isn't avaliable, uri isn't avaliable etc.
+# Register all artists
+# Append img and uri where artist == artist in db
+# Check for doubles
+# What to show if img isn't avaliable
+# If artist already exsist, don't append
