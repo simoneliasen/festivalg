@@ -56,4 +56,4 @@ print(mycursor.rowcount, "was inserted.")
 # Append img and uri where artist == artist in db
 # Check for doubles
 # What to show if img isn't avaliable
-# If artist already exsist, don't append
+# If artist already exsist, don't append xx
