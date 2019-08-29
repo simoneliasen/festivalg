@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import spotipy
 import sys
 from spotipy.oauth2 import SpotifyClientCredentials
+import mysql.connector 
 
 class Artist:
     def __init__(self, name, uri, image, festival):
@@ -64,25 +65,50 @@ class SpotifyData():
             self.artistobjects.append(new_artist)
 
     #Prints Artist objects
-    def print_artistobjects(self):
-        for x in self.artistobjects:
-            print(x)
+    def printartists(self):
+        for element in self.artistobjects:
+            print(element)
+            
+class DbConnect():
+    def __init__(self):
+        pass
 
+    def connect(self, data):
+        cnx = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            passwd="",
+            database="festivalg"
+        )
+        cursor = cnx.cursor()
+        add_query = ("INSERT INTO roskildefestival "
+                "(name, image, url, festival) "
+                "VALUES (%s, %s, %s, %s)")
+        cursor.executemany(add_query, data.artistobjects)
+        cnx.commit()
+        cursor.close()
+        cnx.close()
+
+#Define classes as variables
 ArtistManager = ArtistManager()
 SpotifyData = SpotifyData()
+DbConnect = DbConnect()
 
 # Request data + append artists to list
 ArtistManager.roskilde_festival()
 
-#Get spotify data from queeries via artistlist
+#Get spotify data from queries via artistlist
 SpotifyData.get_data(ArtistManager)
 
 #Initialize artist objects via spotify data
 SpotifyData.initialize_artist()
 
 #Prints artist objects
-SpotifyData.print_artistobjects()
+SpotifyData.printartists()
 
-# add images + additional data
-# integrate with other repo
-# add db integration
+#Append spotify data to db
+#DbConnect.connect(SpotifyData)
+
+#1. Tuple conversion (appendable data)
+#2. add image to data
+#3. integrate with exsisting repo
