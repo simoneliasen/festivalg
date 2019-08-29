@@ -14,24 +14,18 @@
 <h2><b> {% print(info[1]) %} </b></h2>
 
 <!-- Image -->
-<img src="{% print(info[2]) %}" width="300px" height="300px">
+<img src="{% print(info[3]) %}" width="300px" height="300px">
+<br>
+<!-- Spotify URI (needs formating) -->
+<iframe src="{% print(info[2]) %}" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 <br>
 
-<!-- Spotify URI -->
-<!-- Need to split info between url and /artist (add /embed )  -->
-<!-- {% print(info[3]) %} -->
-<iframe src="https://open.spotify.com/embed/artist/3stnxKpza4ha7gXKhQ4kHv" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-<br>
 <!-- Festival -->
-<!-- {% print(info[4]) %} -->
-<br>
 <p> <b>Spiller på: </b></p>
-<p> Roskilde Festival </p>
+<p>{% print(info[4]) %}</p>
 <br>
 <br>
-
 {% endfor %}
-
 
     <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
 </div>
