@@ -30,15 +30,12 @@ class ArtistManager():
         for x in dump: 
             self.festivalartists.append(x)
 
-    def __str__(self):
-        return str(self.festivalartists)
-
 class SpotifyData():
     def __init__(self):
         self.artistobjects = []
-        self.roskildefestival = []
         self.listoflists = []
-
+        self.new_list = []
+        
     def get_data(self, artist_manager):
         client_credentials_manager = SpotifyClientCredentials(client_id='1fc1953f35974811bb2511e360dd422b', client_secret='172b85d4d592449f9268ab7285598088')
         spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
@@ -64,31 +61,26 @@ class SpotifyData():
             new_artist = Artist(artist_name, artist_uri,'','Roskilde Festival')
             self.artistobjects.append(new_artist)
 
-    #Prints Artist objects
-    def printartists(self):
-        for element in self.artistobjects:
-            print(element)
-            
+    def artisttuple(self):
+        self.new_list = list(map(lambda x: (x.name, x.uri, x.image, x.festival), self.artistobjects))
+
 class DbConnect():
     def __init__(self):
         pass
 
     def connect(self, data):
-        cnx = mysql.connector.connect(
+        mydb = mysql.connector.connect(
             host="localhost",
             user="root",
             passwd="",
             database="festivalg"
         )
-        cursor = cnx.cursor()
-        add_query = ("INSERT INTO roskildefestival "
-                "(name, image, url, festival) "
-                "VALUES (%s, %s, %s, %s)")
-        cursor.executemany(add_query, data.artistobjects)
-        cnx.commit()
-        cursor.close()
-        cnx.close()
-
+        mycursor = mydb.cursor()
+        query = "INSERT INTO roskildefestival (name, image, url, festival) VALUES (%s, %s, %s, %s)"
+        mycursor.executemany(query, data.new_list)
+        mydb.commit()
+        print(mycursor.rowcount, "was inserted.")
+        
 #Define classes as variables
 ArtistManager = ArtistManager()
 SpotifyData = SpotifyData()
@@ -103,12 +95,11 @@ SpotifyData.get_data(ArtistManager)
 #Initialize artist objects via spotify data
 SpotifyData.initialize_artist()
 
-#Prints artist objects
-SpotifyData.printartists()
+#Rewrites artistobjects into tuple, that can be appended to db
+SpotifyData.artisttuple()
 
 #Append spotify data to db
-#DbConnect.connect(SpotifyData)
+DbConnect.connect(SpotifyData)
 
-#1. Tuple conversion (appendable data)
 #2. add image to data
 #3. integrate with exsisting repo
