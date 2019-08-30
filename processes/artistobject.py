@@ -6,10 +6,10 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import mysql.connector 
 
 class Artist:
-    def __init__(self, name, uri, image, festival):
+    def __init__(self, name, image, uri, festival):
         self.name = name
+        self.image = image
         self.uri = uri
-        self.image = 'No image'
         self.festival = festival
 
     def __str__(self):
@@ -33,35 +33,21 @@ class ArtistManager():
 class SpotifyData():
     def __init__(self):
         self.artistobjects = []
-        self.listoflists = []
         self.new_list = []
         
     def get_data(self, artist_manager):
         client_credentials_manager = SpotifyClientCredentials(client_id='1fc1953f35974811bb2511e360dd422b', client_secret='172b85d4d592449f9268ab7285598088')
         spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-        for element in artist_manager.festivalartists:
-            if len(sys.argv) > 1:
-                name = ' '.join(sys.argv[1:])
-            else:
-                name = element
-                results = spotify.search(q='artist:' + name, type='artist')
-                items = results['artists']['items']
-                if len(items) > 0:
-                    artist = items[0]
-                    artist_object_data = list((artist['name'], artist['external_urls']['spotify']))
-                    uppermatch = artist_object_data[0].upper() #This could perhaps be done smarter
-                    if uppermatch != element:
-                        self.listoflists.append([element,'Not on Spotify'])
-                    self.listoflists.append(artist_object_data)
+        #Queery artistlist in spotify api to get additional data
+        for artist in artist_manager.festivalartists:
+            results = spotify.search(q='artist:' + artist, type='artist')
+            items = results['artists']['items']
+            if len(items) > 0:
+                artist = items[0]
+                x = Artist(artist['name'], artist['images'][0]['url'] if int(len(artist['images']) >= 1) else "No data", artist['external_urls']['spotify'] if int(len(artist['external_urls']['spotify']) >= 1) else "No data",'Roskilde Festival')
+                self.artistobjects.append(x)
 
-    def initialize_artist(self):
-        for element in self.listoflists:
-            artist_name = element[0]
-            artist_uri = element[1]
-            new_artist = Artist(artist_name, artist_uri,'','Roskilde Festival')
-            self.artistobjects.append(new_artist)
-
-    def artisttuple(self):
+    def artist_tuple(self):
         self.new_list = list(map(lambda x: (x.name, x.image, x.uri, x.festival), self.artistobjects))
 
 class DbConnect():
@@ -92,14 +78,11 @@ ArtistManager.roskilde_festival()
 #Get spotify data from queries via artistlist
 SpotifyData.get_data(ArtistManager)
 
-#Initialize artist objects via spotify data
-SpotifyData.initialize_artist()
-
 #Rewrites artistobjects into tuple, that can be appended to db
-SpotifyData.artisttuple()
+SpotifyData.artist_tuple()
 
 #Append spotify data to db
 DbConnect.connect(SpotifyData)
 
-#2. add image to data
-#3. integrate with exsisting repo
+
+
