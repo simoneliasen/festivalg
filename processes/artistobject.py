@@ -62,7 +62,7 @@ class SpotifyData():
             self.artistobjects.append(new_artist)
 
     def artisttuple(self):
-        self.new_list = list(map(lambda x: (x.name, x.uri, x.image, x.festival), self.artistobjects))
+        self.new_list = list(map(lambda x: (x.name, x.image, x.uri, x.festival), self.artistobjects))
 
 class DbConnect():
     def __init__(self):
