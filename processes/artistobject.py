@@ -47,7 +47,7 @@ class SpotifyData():
                 x = Artist(artist['name'], artist['images'][0]['url'] if int(len(artist['images']) >= 1) else "No data", artist['external_urls']['spotify'] if int(len(artist['external_urls']['spotify']) >= 1) else "No data",'Roskilde Festival')
                 self.artistobjects.append(x)
 
-    def artist_tuple(self):
+    def artisttuple(self):
         self.new_list = list(map(lambda x: (x.name, x.image, x.uri, x.festival), self.artistobjects))
 
 class DbConnect():
@@ -79,7 +79,7 @@ ArtistManager.roskilde_festival()
 SpotifyData.get_data(ArtistManager)
 
 #Rewrites artistobjects into tuple, that can be appended to db
-SpotifyData.artist_tuple()
+SpotifyData.artisttuple()
 
 #Append spotify data to db
 DbConnect.connect(SpotifyData)
