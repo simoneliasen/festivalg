@@ -6,3 +6,4 @@ This is a summer project made in 2019, with an emphasis on practising Python, fl
 
 ## Preview of the application
 ![gif of application](http://korius.dk/github/festivalg.gif)
+ 
