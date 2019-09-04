@@ -55,17 +55,20 @@ class DbConnect():
         pass
 
     def connect(self, data):
-        mydb = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            passwd="",
-            database="festivalg"
-        )
-        mycursor = mydb.cursor()
-        query = "INSERT INTO roskildefestival (name, image, url, festival) VALUES (%s, %s, %s, %s)"
-        mycursor.executemany(query, data.new_list)
-        mydb.commit()
-        print(mycursor.rowcount, "was inserted.")
+        try:
+            mydb = mysql.connector.connect(
+                host="localhost",
+                user="root",
+                passwd="",
+                database="festivalg"
+            )
+            mycursor = mydb.cursor()
+            query = "INSERT INTO roskildefestival (name, image, url, festival) VALUES (%s, %s, %s, %s)"
+            mycursor.executemany(query, data.new_list)
+            mydb.commit()
+            print(mycursor.rowcount, "was inserted.")
+        except:
+            print("Kunne ikke få forbindelse til databasen.")
         
 #Define classes as variables
 ArtistManager = ArtistManager()
