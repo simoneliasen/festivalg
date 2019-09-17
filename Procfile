@@ -1,1 +1,1 @@
-web: gunicorn festivalg:app
+web: gunicorn app:app
