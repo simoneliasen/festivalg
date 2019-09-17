@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-#DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.environ['postgresql-adjacent-88679']
 
 db = SQLAlchemy(app)
 
