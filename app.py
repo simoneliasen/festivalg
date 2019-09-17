@@ -1,9 +1,19 @@
-#Import flask class + render_template class for acessing html templates Import url_for, for serving static files (css,js)
 from flask import Flask, render_template, url_for, request
+from config import DevelopmentConfig
 import mysql.connector
 import json
+import os
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+app.config.from_object(DevelopmentConfig)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+from models import *
+
 
 # Mysql connection
 mydb = mysql.connector.connect(
