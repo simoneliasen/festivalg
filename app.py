@@ -22,8 +22,6 @@ class Artist(db.Model):
     def __repr__(self):
         return f"Artist('{self.name}', '{self.img}', '{self.uri}', '{self.festivalg}')"
 
-# from models import *
-
 
 # mydb = mysql.connector.connect(
 #   host="localhost",
@@ -64,3 +62,13 @@ def artist():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# OLD SQL SETUP
+# CREATE TABLE roskildefestival (
+ #   ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ #   name varchar(255),
+ #   image varchar(255),
+ #   url varchar(255),
+ #   festival varchar(255)
+#);

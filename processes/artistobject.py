@@ -74,16 +74,12 @@ class DbConnect():
 ArtistManager = ArtistManager()
 SpotifyData = SpotifyData()
 DbConnect = DbConnect()
-
 # Request data + append artists to list
 ArtistManager.roskilde_festival()
-
 #Get spotify data from queries via artistlist
 SpotifyData.get_data(ArtistManager)
-
 #Rewrites artistobjects into tuple, that can be appended to db
 SpotifyData.artisttuple()
-
 #Append spotify data to db
 DbConnect.connect(SpotifyData)
 
