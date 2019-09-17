@@ -4,13 +4,18 @@ import mysql.connector
 import json
 import os
 from flask_sqlalchemy import SQLAlchemy
+import psycopg2
 
 app = Flask(__name__)
 
 app.config.from_object(DevelopmentConfig)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+#DATABASE_URL = os.environ['DATABASE_URL']
+
 db = SQLAlchemy(app)
+
+
 
 from models import *
 
