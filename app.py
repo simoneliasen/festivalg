@@ -17,27 +17,28 @@ class Artist(db.Model):
     img = db.Column(db.String())
     uri = db.Column(db.String())
     festival = db.Column(db.String())
-#default='default.jpg' is an option
+#default='default.jpg' is an option for non spotify artists (to be added)
 
     def __repr__(self):
         return f"Artist('{self.name}', '{self.img}', '{self.uri}', '{self.festivalg}')"
 
+List = []
+Artist = Artists.query.all()
+for artist.name in Artist:
+    List.append(artist.name)
+    roskildeartists = (json.dumps(List))
 
-# mydb = mysql.connector.connect(
-#   host="localhost",
-#   user="root",
-#   passwd="",
-#   database="festivalg"
-# )
+    return render_template("home.html", roskildeartists=roskildeartists)
 
-# display Mysql names for search autocomplete
+# Old Mysql code to search names of artists
 #cur = mydb.cursor()
 #cur.execute("SELECT name FROM roskildefestival")
 #result_list = [row[0] for row in cur.fetchall()]
+#roskildeartists = (json.dumps(result_list))
 
+# Momentary search results until postgres is set up properly
 List = ["Geeks", "For", "Geeks"] 
 roskildeartists = (json.dumps(List))
-
 
 # Home page
 @app.route("/")
@@ -64,11 +65,3 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-# OLD SQL SETUP
-# CREATE TABLE roskildefestival (
- #   ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
- #   name varchar(255),
- #   image varchar(255),
- #   url varchar(255),
- #   festival varchar(255)
-#);
