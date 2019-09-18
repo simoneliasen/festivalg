@@ -22,13 +22,12 @@ class Artist(db.Model):
     def __repr__(self):
         return f"Artist('{self.name}', '{self.img}', '{self.uri}', '{self.festivalg}')"
 
-List = []
-Artist = Artists.query.all()
-for artist.name in Artist:
-    List.append(artist.name)
-    roskildeartists = (json.dumps(List))
-
-    return render_template("home.html", roskildeartists=roskildeartists)
+#Postgres ORM logic to implement
+#List = []
+#Artist = Artists.query.all()
+#for artist.name in Artist:
+#    List.append(artist.name)
+#    roskildeartists = (json.dumps(List))
 
 # Old Mysql code to search names of artists
 #cur = mydb.cursor()
