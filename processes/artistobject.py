@@ -63,12 +63,6 @@ class DbConnect():
                 db.session.commit()
         except:
             print("Could not append to database")
-
-
-            #query = "INSERT INTO roskildefestival (name, image, url, festival) VALUES (%s, %s, %s, %s)"
-            #mycursor.executemany(query, data.new_list)
-            #print(mycursor.rowcount, "was inserted.")
-    
         
 #Define classes as variables
 ArtistManager = ArtistManager()
