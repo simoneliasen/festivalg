@@ -2,9 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import spotipy
 import sys
-from spotipy.oauth2 import SpotifyClientCredentials
-from app import db
-#import mysql.connector 
+from spotipy.oauth2 import SpotifyClientCredentials 
 
 class Artist:
     def __init__(self, name, image, uri, festival):
@@ -57,10 +55,15 @@ class DbConnect():
 
     def connect(self):
         try:
-            db.create_all()
+            from app import db
+            from app import Artist
             artist2 = Artist(name='testname2', img='testimg2', uri='testuri2', festival='testfestival2')
             db.session.add(artist2)
             db.session.commit()
+        except:
+            print("Could not append to database")
+
+            #Old mysql.connector code
             # mydb = mysql.connector.connect(
             #     host="localhost",
             #     user="root",
@@ -72,8 +75,8 @@ class DbConnect():
             #mycursor.executemany(query, data.new_list)
             #mydb.commit()
             #print(mycursor.rowcount, "was inserted.")
-        except:
-            print("Could not append to database")
+        #except:
+            #print("Could not append to database")
         
 #Define classes as variables
 ArtistManager = ArtistManager()
