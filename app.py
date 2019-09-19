@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, request
 from config import DevelopmentConfig
-#import mysql.connector
+from sqlalchemy.orm import sessionmaker
 import json
 import os
 from flask_sqlalchemy import SQLAlchemy
@@ -21,13 +21,6 @@ class Artist(db.Model):
 
     def __repr__(self):
         return f"Artist('{self.name}', '{self.img}', '{self.uri}', '{self.festivalg}')"
-
-#Postgres ORM logic to implement
-#List = []
-#Artist = Artists.query.all()
-#for artist.name in Artist:
-#    List.append(artist.name)
-#    roskildeartists = (json.dumps(List))
 
 # Old Mysql code to search names of artists
 #cur = mydb.cursor()

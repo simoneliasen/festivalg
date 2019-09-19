@@ -1,5 +1,5 @@
 #import mysql.connector
-import json
+#import json
 
 #mydb = mysql.connector.connect(
 #  host="localhost",
@@ -10,6 +10,7 @@ import json
 
 #cur = mydb.cursor()
 #cur.execute("SELECT name FROM roskildefestival")
-result_list = [row[0] for row in cur.fetchall()]
-roskildeartists = (json.dumps(result_list))
-print(roskildeartists)
+#result_list = [row[0] for row in cur.fetchall()]
+#roskildeartists = (json.dumps(result_list))
+#print(roskildeartists)
+
