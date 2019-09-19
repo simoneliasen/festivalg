@@ -53,30 +53,22 @@ class DbConnect():
     def __init__(self):
         pass
 
-    def connect(self):
+    def connect(self, data):
         try:
             from app import db
             from app import Artist
-            artist2 = Artist(name='testname2', img='testimg2', uri='testuri2', festival='testfestival2')
-            db.session.add(artist2)
-            db.session.commit()
+            for artist in data.new_list:
+                artist = Artist(name=artist.name, img=artist.img, uri=artist.uri, festival=artist.festival)
+                db.session.add(artist)
+                db.session.commit()
         except:
             print("Could not append to database")
 
-            #Old mysql.connector code
-            # mydb = mysql.connector.connect(
-            #     host="localhost",
-            #     user="root",
-            #     passwd="",
-            #     database="festivalg"
-            # )
-            # mycursor = mydb.cursor()
+
             #query = "INSERT INTO roskildefestival (name, image, url, festival) VALUES (%s, %s, %s, %s)"
             #mycursor.executemany(query, data.new_list)
-            #mydb.commit()
             #print(mycursor.rowcount, "was inserted.")
-        #except:
-            #print("Could not append to database")
+    
         
 #Define classes as variables
 ArtistManager = ArtistManager()
@@ -89,7 +81,7 @@ SpotifyData.get_data(ArtistManager)
 #Rewrites artistobjects into tuple, that can be appended to db
 SpotifyData.artisttuple()
 #Append spotify data to db
-DbConnect.connect()
+DbConnect.connect(SpotifyData)
 
 
 
