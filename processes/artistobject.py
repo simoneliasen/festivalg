@@ -77,9 +77,6 @@ SpotifyData.artisttuple()
 #Append spotify data to db
 DbConnect.connect(SpotifyData)
 
-
-
-
 #Run this in the python intepreter:
 # from app import db
 # db.create_all()
