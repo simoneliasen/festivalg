@@ -55,7 +55,7 @@ class DbConnect():
     def __init__(self):
         pass
 
-    def connect(self, data):
+    def connect(self):
         try:
             db.create_all()
             artist2 = Artist(name='testname2', img='testimg2', uri='testuri2', festival='testfestival2')
@@ -73,7 +73,7 @@ class DbConnect():
             #mydb.commit()
             #print(mycursor.rowcount, "was inserted.")
         except:
-            print("Kunne ikke få forbindelse til databasen.")
+            print("Could not append to database")
         
 #Define classes as variables
 ArtistManager = ArtistManager()
@@ -86,7 +86,7 @@ SpotifyData.get_data(ArtistManager)
 #Rewrites artistobjects into tuple, that can be appended to db
 SpotifyData.artisttuple()
 #Append spotify data to db
-DbConnect.connect(SpotifyData)
+DbConnect.connect()
 
 
 
