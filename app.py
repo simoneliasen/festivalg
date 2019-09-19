@@ -1,9 +1,9 @@
 from flask import Flask, render_template, url_for, request
+from flask_sqlalchemy import SQLAlchemy
 from config import DevelopmentConfig
 from sqlalchemy.orm import sessionmaker
 import json
 import os
-from flask_sqlalchemy import SQLAlchemy
 import psycopg2
 
 app = Flask(__name__)
@@ -21,6 +21,16 @@ class Artist(db.Model):
 
     def __repr__(self):
         return f"Artist('{self.name}', '{self.img}', '{self.uri}', '{self.festivalg}')"
+
+#Run this in the python intepreter:
+# from app import db
+# db.create_all()
+
+#Insert data to db from intepreter
+#from app import Artist
+#artist1 = Artist(name='testname', img='testimg', uri='testuri', festival='testfestival')
+#db.session.add(user1)
+#db.session.commit()
 
 # Old Mysql code to search names of artists
 #cur = mydb.cursor()

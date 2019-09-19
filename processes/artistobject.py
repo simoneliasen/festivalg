@@ -3,7 +3,8 @@ from bs4 import BeautifulSoup
 import spotipy
 import sys
 from spotipy.oauth2 import SpotifyClientCredentials
-import mysql.connector 
+from app import db
+#import mysql.connector 
 
 class Artist:
     def __init__(self, name, image, uri, festival):
@@ -56,17 +57,21 @@ class DbConnect():
 
     def connect(self, data):
         try:
-            mydb = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                passwd="",
-                database="festivalg"
-            )
-            mycursor = mydb.cursor()
-            query = "INSERT INTO roskildefestival (name, image, url, festival) VALUES (%s, %s, %s, %s)"
-            mycursor.executemany(query, data.new_list)
-            mydb.commit()
-            print(mycursor.rowcount, "was inserted.")
+            db.create_all()
+            artist2 = Artist(name='testname2', img='testimg2', uri='testuri2', festival='testfestival2')
+            db.session.add(artist2)
+            db.session.commit()
+            # mydb = mysql.connector.connect(
+            #     host="localhost",
+            #     user="root",
+            #     passwd="",
+            #     database="festivalg"
+            # )
+            # mycursor = mydb.cursor()
+            #query = "INSERT INTO roskildefestival (name, image, url, festival) VALUES (%s, %s, %s, %s)"
+            #mycursor.executemany(query, data.new_list)
+            #mydb.commit()
+            #print(mycursor.rowcount, "was inserted.")
         except:
             print("Kunne ikke få forbindelse til databasen.")
         
@@ -85,3 +90,13 @@ DbConnect.connect(SpotifyData)
 
 
 
+
+#Run this in the python intepreter:
+# from app import db
+# db.create_all()
+
+#Insert data to db from intepreter
+#from app import Artist
+#artist1 = Artist(name='testname', img='testimg', uri='testuri', festival='testfestival')
+#db.session.add(user1)
+#db.session.commit()
