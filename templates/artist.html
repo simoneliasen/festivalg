@@ -7,24 +7,23 @@
 
 <div class="container">
 
-  
-<h2><b> {% print(search_input) %} </b></h2>
+{% for info in artist_data %}
 
 <!-- Name -->
-<!-- <h2><b> {% print(info[1]) %} </b></h2> -->
+<h2><b> {% print(info[1]) %} </b></h2>
 
 <!-- Image -->
-<!-- <img src="{% print(info[2]) %}" width="300px" height="300px"> -->
+<img src="{% print(info[2]) %}" width="300px" height="300px">
 <br>
 <!-- Spotify URI (needs formating) -->
-<!-- <iframe src="{% print(info[3].replace("/artist/", "/embed/artist/")) %}" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-<br> -->
+<iframe src="{% print(info[3].replace("/artist/", "/embed/artist/")) %}" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<br>
 
 <!-- Festival -->
-<!-- <p> <b>Spiller på: </b></p>
+<p> <b>Spiller på: </b></p>
 <p>{% print(info[4]) %}</p>
 <br>
-{% endfor %} -->
+{% endfor %}
 
     <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
 <br>
