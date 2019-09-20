@@ -39,18 +39,9 @@ def artist():
     if request.method == "GET":
               return "Please submit the form instead."
     else:
-        print('Close enough')
-        #Input from form
         search_input = request.form.get("search")
         artist_data = Artist.query.filter_by(name=search_input)
         return render_template("artist.html", search_input = search_input, artist_data = artist_data)
-        #Use data from database
-        #  artist_data = Artist.query.filter_by(name=search_input)
-        #  artist_data
-
-        #  cur.execute("SELECT * FROM roskildefestival WHERE name = %s", (search_input,))
-        #  artist_data = cur.fetchall()
-        # return render_template("artist.html", search_input = search_input, artist_data = artist_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
