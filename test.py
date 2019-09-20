@@ -40,7 +40,6 @@ class SpotifyData():
         for sub_list in artistdata.artists:
             artistdict = {}
             artistdict['name'] = sub_list[0]
-            artistdict['festival'] = sub_list[1]
             try:
                 results = spotify.search(q='artist:' + sub_list[0], type='artist')
                 if len(results) > 0:
@@ -49,18 +48,21 @@ class SpotifyData():
                         artist = items[0]
                         image = artist['images'][0]['url']
                         if len(image) > 0:
-                            artistdict['image'] = image
+                            artistdict['img'] = image
                         else:
-                            artistdict['image'] = 'Not avaliable'  
+                            artistdict['img'] = 'Not avaliable'  
                         uri = artist['external_urls']['spotify']
                         if len(uri) > 0:
                             artistdict['uri'] = uri
                         else:
-                            artistdict['uri'] = 'Not avaliable'  
+                            artistdict['uri'] = 'Not avaliable'
+                        artistdict['festival'] = sub_list[1]  
                         self.artistobjects.append(dict(artistdict))
+            
             except:
-                artistdict['image'] = 'Not avaliable'
+                artistdict['img'] = 'Not avaliable'
                 artistdict['uri'] = 'Not avaliable'
+                artistdict['festival'] = sub_list[1]
                 self.artistobjects.append(dict(artistdict))
         
 #Define classes as variables
@@ -70,7 +72,6 @@ SpotifyData = SpotifyData()
 FestivalScraper.roskildescraper()
 FestivalScraper.smukfestscraper()
 SpotifyData.getdata(FestivalScraper)
-
 #Db session
 for artistdict in SpotifyData.artistobjects:
     artist = Artist(**artistdict)

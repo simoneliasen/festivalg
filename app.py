@@ -15,22 +15,12 @@ class Artist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(300), nullable=False)
     festival = db.Column(db.String())
-    image = db.Column(db.String())
+    img = db.Column(db.String())
     uri = db.Column(db.String())
   
     def __repr__(self):
         return f"Artist('{self.name}', '{self.festival}', '{self.image}', '{self.uri}')"
 
-# class Artist(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(300), unique=True, nullable=False)
-#     img = db.Column(db.String())
-#     uri = db.Column(db.String())
-#     festival = db.Column(db.String())
-#default='default.jpg' is an option for non spotify artists (to be added)
-
-    # def __repr__(self):
-    #     return f"Artist('{self.name}', '{self.img}', '{self.uri}', '{self.festivalg}')"
 
 #Run this in the python intepreter:
 # from app import db
