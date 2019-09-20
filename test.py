@@ -71,9 +71,6 @@ FestivalScraper.roskildescraper()
 FestivalScraper.smukfestscraper()
 SpotifyData.getdata(FestivalScraper)
 
-#For testing
-print(SpotifyData.artistobjects)
-
 #Db session
 for artistdict in SpotifyData.artistobjects:
     artist = Artist(**artistdict)
