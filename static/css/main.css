@@ -37,17 +37,17 @@ body {
   font-size: 1.7rem;
 }
 
-form {
+/* form {
   margin-bottom: 0rem;
   display: inline;
-}
+} */
 .autocomplete {
   display: inline
 }
 /* Search form */
 input[type="text"] {
   width: 300px;
-  display: inline;
+  /* display: inline; */
 }
 
 /* Search button */
