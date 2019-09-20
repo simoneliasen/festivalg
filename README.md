@@ -7,9 +7,16 @@ This project was made in the summer of 2019 with an emphasis on practising Pytho
 ## Preview of the application
 ![gif of application](http://korius.dk/github/festivalg.gif)
 
-This application is being rewritten going form mysql.connector and mysql
+This application is currently under maintance, as it's being rewritten going form mysql.connector and mysql
 to sqlalchemy and postgres.
 
 Here's a link of the current progress:
 https://festivalg99.herokuapp.com/
  
+ 
+ ## To do:
+ - Update gif preview to newer version
+ - Optimize Sqlalchemy query for getdata.py
+ - Add searchbar functionality again
+ - Introduce animation on artist page load
+ - Add festival sites (w. weather, prices etc)
