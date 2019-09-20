@@ -24,7 +24,7 @@ class Artist(db.Model):
 momentarystorage = []
 artists = Artist.query.all()
 for artist in artists:
-    artist.append(momentarystorage)
+    momentarystorage.append(artist)
 roskildeartists = (json.dumps(momentarystorage))
 
 
