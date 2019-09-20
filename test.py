@@ -3,7 +3,7 @@ import requests
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials 
 from app import db
-from models import Artist
+from app import Artist
 
 #Storage of artist names before running appending data through spotify query
 class FestivalScraper():
@@ -39,8 +39,8 @@ class SpotifyData():
         spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
         for sub_list in artistdata.artists:
             artistdict = {}
-            artistdict['Name'] = sub_list[0]
-            artistdict['Festival'] = sub_list[1]
+            artistdict['name'] = sub_list[0]
+            artistdict['festival'] = sub_list[1]
             try:
                 results = spotify.search(q='artist:' + sub_list[0], type='artist')
                 if len(results) > 0:
@@ -49,21 +49,20 @@ class SpotifyData():
                         artist = items[0]
                         image = artist['images'][0]['url']
                         if len(image) > 0:
-                            artistdict['Image'] = image
+                            artistdict['image'] = image
                         else:
-                            artistdict['Image'] = 'Not avaliable'  
+                            artistdict['image'] = 'Not avaliable'  
                         uri = artist['external_urls']['spotify']
                         if len(uri) > 0:
-                            artistdict['Uri'] = uri
+                            artistdict['uri'] = uri
                         else:
-                            artistdict['Uri'] = 'Not avaliable'  
+                            artistdict['uri'] = 'Not avaliable'  
                         self.artistobjects.append(dict(artistdict))
             except:
-                artistdict['Image'] = 'Not avaliable'
-                artistdict['Uri'] = 'Not avaliable'
+                artistdict['image'] = 'Not avaliable'
+                artistdict['uri'] = 'Not avaliable'
                 self.artistobjects.append(dict(artistdict))
         
-
 #Define classes as variables
 FestivalScraper = FestivalScraper()
 SpotifyData = SpotifyData()
@@ -75,10 +74,8 @@ SpotifyData.getdata(FestivalScraper)
 #For testing
 print(SpotifyData.artistobjects)
 
-
 #Db session
 for artistdict in SpotifyData.artistobjects:
     artist = Artist(**artistdict)
     db.session.add(artist)
     db.session.commit()
-

@@ -11,6 +11,16 @@ app.config.from_object(DevelopmentConfig)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+class Artist(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(300), nullable=False)
+    festival = db.Column(db.String())
+    img = db.Column(db.String())
+    uri = db.Column(db.String())
+  
+    def __repr__(self):
+        return f"Artist('{self.name}', '{self.festival}', '{self.img}', '{self.uri}')"
+
 # class Artist(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     name = db.Column(db.String(300), unique=True, nullable=False)
