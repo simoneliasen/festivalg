@@ -25,20 +25,20 @@ class Artist(db.Model):
 # Old Mysql code to search names of artists
 #cur = mydb.cursor()
 #cur.execute("SELECT name FROM roskildefestival")
-artistquery = session.query(Artist.name)
-artistlist = (json.dumps(artistquery))
+
+# artistlist = session.query(SomeModel.col1)
 #result_list = [row[0] for row in cur.fetchall()]
 #roskildeartists = (json.dumps(result_list))
 
 # Momentary search results until postgres is set up properly
-# List = ["Geeks", "For", "Geeks"] 
-# roskildeartists = (json.dumps(List))
+List = ["Geeks", "For", "Geeks"] 
+roskildeartists = (json.dumps(List))
 
 # Home page
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', artistlist=artistlist)
+    return render_template('home.html', roskildeartists=roskildeartists)
 
 # Artist page
 @app.route('/artist', methods=["GET", "POST"])

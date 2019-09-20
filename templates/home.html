@@ -22,7 +22,7 @@
 
 <!-- load artist data from sql + executes js code -->
 <script>
-var artists = {{ artistlist|safe }}; // Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
+var artists = {{ roskildeartists|safe }}; // Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
 autocomplete(document.getElementById("myInput"), artists); /*Function that executes autocomplete feature */
 </script>
 
