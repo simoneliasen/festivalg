@@ -13,15 +13,15 @@
 <h2><b> {% print(info.name) %} </b></h2>
 
 <!-- Image -->
-<img src="{% print(info.festival) %}" width="300px" height="300px">
+<img src="{% print(info.img) %}" width="300px" height="300px">
 <br>
 <!-- Spotify URI (needs formating) -->
-<iframe src="{% print(info.img.replace("/artist/", "/embed/artist/")) %}" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<iframe src="{% print(info.uri.replace("/artist/", "/embed/artist/")) %}" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 <br>
 
 <!-- Festival -->
 <p> <b>Spiller på: </b></p>
-<p>{% print(info.uri) %}</p>
+<p>{% print(info.festival) %}</p>
 <br>
 {% endfor %}
 
