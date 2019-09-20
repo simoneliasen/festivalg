@@ -21,7 +21,14 @@ class Artist(db.Model):
     def __repr__(self):
         return f"Artist('{self.name}', '{self.festival}', '{self.image}', '{self.uri}')"
 
+momentarystorage = []
+artists = Artist.query.all()
+    for artist in artists:
+        artist.append(momentarystorage)
+roskildeartists = (json.dumps(momentarystorage))
 
+
+# hello = [artist for artists in artists]
 # Old Mysql code to search names of artists
 #cur = mydb.cursor()
 #cur.execute("SELECT name FROM roskildefestival")
@@ -31,8 +38,8 @@ class Artist(db.Model):
 #roskildeartists = (json.dumps(result_list))
 
 # Momentary search results until postgres is set up properly
-List = ["Geeks", "For", "Geeks"] 
-roskildeartists = (json.dumps(List))
+# List = ["Geeks", "For", "Geeks"] 
+# roskildeartists = (json.dumps(List))
 
 # Home page
 @app.route("/")
