@@ -29,6 +29,14 @@ class ArtistManager():
         for x in dump: 
             self.festivalartists.append(x)
 
+
+
+
+
+
+
+
+
 class SpotifyData():
     def __init__(self):
         self.artistobjects = []
@@ -48,6 +56,18 @@ class SpotifyData():
 
     def artisttuple(self):
         self.new_list = list(map(lambda x: (x.name, x.image, x.uri, x.festival), self.artistobjects))
+
+
+
+
+
+
+
+
+
+
+
+
 
 class DbConnect():
     def __init__(self):
