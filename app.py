@@ -22,31 +22,23 @@ class Artist(db.Model):
         return f"Artist('{self.name}', '{self.festival}', '{self.image}', '{self.uri}')"
 
 
-#Run this in the python intepreter:
-# from app import db
-# db.create_all()
-
-#Insert data to db from intepreter
-#from app import Artist
-#artist1 = Artist(name='testname', img='testimg', uri='testuri', festival='testfestival')
-#db.session.add(user1)
-#db.session.commit()
-
 # Old Mysql code to search names of artists
 #cur = mydb.cursor()
 #cur.execute("SELECT name FROM roskildefestival")
+artistquery = session.query(Artist.name)
+artistlist = (json.dumps(artistquery))
 #result_list = [row[0] for row in cur.fetchall()]
 #roskildeartists = (json.dumps(result_list))
 
 # Momentary search results until postgres is set up properly
-List = ["Geeks", "For", "Geeks"] 
-roskildeartists = (json.dumps(List))
+# List = ["Geeks", "For", "Geeks"] 
+# roskildeartists = (json.dumps(List))
 
 # Home page
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', roskildeartists=roskildeartists)
+    return render_template('home.html', artistlist=artistlist)
 
 # Artist page
 @app.route('/artist', methods=["GET", "POST"])
