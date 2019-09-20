@@ -27,20 +27,6 @@ for artist in artists:
     momentarystorage.append(artist.name)
 roskildeartists = (json.dumps(momentarystorage))
 
-
-# hello = [artist for artists in artists]
-# Old Mysql code to search names of artists
-#cur = mydb.cursor()
-#cur.execute("SELECT name FROM roskildefestival")
-
-# artistlist = session.query(SomeModel.col1)
-#result_list = [row[0] for row in cur.fetchall()]
-#roskildeartists = (json.dumps(result_list))
-
-# Momentary search results until postgres is set up properly
-# List = ["Geeks", "For", "Geeks"] 
-# roskildeartists = (json.dumps(List))
-
 # Home page
 @app.route("/")
 @app.route("/home")
@@ -55,12 +41,16 @@ def artist():
     else:
         print('Close enough')
         #Input from form
- #       search_input = request.form.get("search")
+        search_input = request.form.get("search")
+        artist_data = Artist.query.filter_by(name=search_input)
+        return render_template("artist.html", search_input = search_input, artist_data = artist_data)
         #Use data from database
-  #      cur = mydb.cursor()
-   #     cur.execute("SELECT * FROM roskildefestival WHERE name = %s", (search_input,))
-    #    artist_data = cur.fetchall()
-     #   return render_template("artist.html", search_input = search_input, artist_data = artist_data)
+        #  artist_data = Artist.query.filter_by(name=search_input)
+        #  artist_data
+
+        #  cur.execute("SELECT * FROM roskildefestival WHERE name = %s", (search_input,))
+        #  artist_data = cur.fetchall()
+        # return render_template("artist.html", search_input = search_input, artist_data = artist_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
