@@ -58,7 +58,6 @@ class SpotifyData():
                             artistdict['uri'] = 'Not avaliable'
                         artistdict['festival'] = sub_list[1]  
                         self.artistobjects.append(dict(artistdict))
-            
             except:
                 artistdict['img'] = 'Not avaliable'
                 artistdict['uri'] = 'Not avaliable'
