@@ -27,12 +27,17 @@ class Artist(db.Model):
 @app.route("/home")
 def home():
     momentarystorage = []
-    artists = Artist.query.all()
-    for artist in artists:
-        momentarystorage.append(artist.name)
-        momentarystorage.append(artist.festival)
+    #query artists distinctively
+    for artist in Artist.query.distinct(artist.name):
+        momentarystorage.append(artist)
+    #query festivals distinctively
+    for artist in Artist.query.distinct(artist.festival):
+        momentarystorage.append(artist)
+
     roskildeartists = (json.dumps(momentarystorage))
+
     return render_template('home.html', roskildeartists=roskildeartists)
+
 
 # Artist page
 @app.route('/artist', methods=["GET", "POST"])
