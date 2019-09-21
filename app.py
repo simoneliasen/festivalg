@@ -21,12 +21,13 @@ class Artist(db.Model):
     def __repr__(self):
         return f"Artist('{self.name}', '{self.festival}', '{self.image}', '{self.uri}')"
 
+
 # Home page
 @app.route("/")
 @app.route("/home")
 def home():
     momentarystorage = []
-    artists = Artist.query.all.distinct()
+    artists = Artist.query.all()
     for artist in artists:
         momentarystorage.append(artist.name)
         momentarystorage.append(artist.festival)
