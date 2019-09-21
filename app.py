@@ -22,8 +22,8 @@ class Artist(db.Model):
         return f"Artist('{self.name}', '{self.festival}', '{self.image}', '{self.uri}')"
 
 # Home page
-@app.route("/")
-@app.route("/home")
+@app.route('/', methods=['GET'])
+@app.route('/home')
 def home():
     momentarystorage = []
     artists = Artist.query.all()
@@ -35,6 +35,10 @@ def home():
     roskildeartists = (json.dumps(distinctlist))
     return render_template('home.html', roskildeartists=roskildeartists)
  
+@app.route('/sw.js', methods=['GET'])
+def sw():
+    return app.send_static_file('sw.js')
+
 # Artist page
 @app.route('/artist', methods=["GET", "POST"])
 def artist():
