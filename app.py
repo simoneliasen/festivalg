@@ -43,7 +43,20 @@ def artist():
         artist_data = Artist.query.filter_by(name=search_input)
         return render_template("artist.html", search_input = search_input, artist_data = artist_data)
 
+
+#Festival page
+@app.route('/festival', methods=["GET", "POST"])
+def festival():
+    if request.method == "GET":
+              return "Please submit the form instead."
+    else:
+        search_input = request.form.get("search")
+        artist_data = Artist.query.filter_by(festival=search_input)
+        return render_template("festival.html", search_input = search_input, artist_data = artist_data)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
