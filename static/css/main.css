@@ -120,4 +120,26 @@ button:hover {
 }
 
 
-/* CLEAN UP */
+/*  mobile */
+@media (max-width: 500px) {
+  input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  width: 200px;
+  }
+
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-size: 12px;
+  }
+
+}
