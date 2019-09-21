@@ -3,7 +3,7 @@ import requests
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials 
 from app import db
-from models import Artist
+from app import Artist
 
 #Storage of artist names before running appending data through spotify query
 class FestivalScraper():
