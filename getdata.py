@@ -3,7 +3,7 @@ import requests
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials 
 from app import db
-from app import Artist
+from models import Artist
 
 #Storage of artist names before running appending data through spotify query
 class FestivalScraper():
@@ -42,17 +42,17 @@ class SpotifyData():
             artistdict['name'] = sub_list[0]
             try:
                 results = spotify.search(q='artist:' + sub_list[0], type='artist')
-                if len(results) > 0:
+                if results:
                     items = results['artists']['items']
-                    if len(items) > 0:
+                    if items:
                         artist = items[0]
                         image = artist['images'][0]['url']
-                        if len(image) > 0:
+                        if image:
                             artistdict['img'] = image
                         else:
                             artistdict['img'] = 'Not avaliable'  
                         uri = artist['external_urls']['spotify']
-                        if len(uri) > 0:
+                        if uri:
                             artistdict['uri'] = uri
                         else:
                             artistdict['uri'] = 'Not avaliable'
