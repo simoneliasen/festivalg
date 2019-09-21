@@ -21,15 +21,15 @@ class Artist(db.Model):
     def __repr__(self):
         return f"Artist('{self.name}', '{self.festival}', '{self.image}', '{self.uri}')"
 
-
 # Home page
 @app.route("/")
 @app.route("/home")
 def home():
     momentarystorage = []
-    artists = Artist.query.all()
+    artists = Artist.query.all.distinct()
     for artist in artists:
         momentarystorage.append(artist.name)
+        momentarystorage.append(artist.festival)
     roskildeartists = (json.dumps(momentarystorage))
     return render_template('home.html', roskildeartists=roskildeartists)
 
@@ -42,7 +42,6 @@ def artist():
         search_input = request.form.get("search")
         artist_data = Artist.query.filter_by(name=search_input)
         return render_template("artist.html", search_input = search_input, artist_data = artist_data)
-
 
 #Festival page
 @app.route('/festival', methods=["GET", "POST"])
