@@ -1,9 +1,21 @@
-
-
 {% extends "layout.html" %}
 {% block content %}
-<p>{% print(artist.name) %}</p>
 
 
+<div class="container"></div>
+{% for data in festival_data %}
+<!-- Name -->
+<h2><b> {% print(data.name) %} </b></h2><br>
+<!-- Image -->
+<img src="{% print(data.img) %}" width="300px" height="300px">
+{% endfor %}
+</div>
 
+
+<br>
+    <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
+<br>
+</div>
+  <!-- </div> -->
+<!-- <center> -->
 {% endblock content %}
