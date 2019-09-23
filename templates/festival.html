@@ -2,20 +2,90 @@
 {% block content %}
 
 
-<div class="container"></div>
+
+
+<!-- Festival name, Image date-->
+<br><br>
+
+<center>
+  <img src="../static/img/smukfest.png">
+  <h1><b> {% print(search_input) %} </b></h1>
+
+
+
+<p><b> 7-9 August 2020</b></p>
+
+
+<!-- Festival description -->
+<p>Smukfest, også kendt som Skanderborg Festival eller Danmarks Smukkeste Festival, er en dansk musikfestival som afholdes hver sommer i anden weekend af august i Skanderborg under temaet "Musik & Bøgetræer".<br>
+
+    Musikken og diverse happenings foregår under bøgetræer og ved nærliggende søer og deraf navnet "Danmarks Smukkeste Festival." Festivalen har de senere år ofte haft udsolgt.<br>
+    
+    Smukfest fokuserer fortrinvis på dansk musik med både kommende talenter/grupper samt gamle kendinge, men har altid et par store udenlandske navne på plakaten.<br>
+    
+    Festivalens maskot er FestiWalther, der er en musikglad skovtrold født 5. juli 1579 i Skanderborgs bøgeskove, og ideen til den første festval blev skabt den 5. juli 1979 – på Walthers 400 års fødselsdag.</p>
+
+<!--  tickets -->
+<a href="https://smukshop.dk/" class="button">KØB BILLET</a>
+
+<!-- Festival weather (add api)-->
+
+<br><br><br>
+<h3><b> Hvem spiller på  {% print(search_input) %} ?</b></h3>
+</center>
+
+<!-- Artist grid -->
+<center>
 {% for data in festival_data %}
-<!-- Name -->
-<h2><b> {% print(data.name) %} </b></h2><br>
-<!-- Image -->
-<img src="{% print(data.img) %}" width="300px" height="300px">
+<div class="artistwrapper">
+    <div class="two columns">
+    <p><b> {% print(data.name) %} </b></p>
+    <img src="{% print(data.img) %}" width="300px" height="300px">
+  </div>
+</div>
 {% endfor %}
+</center>
+<!-- Add artist-page on-click -->
+<!-- Implement support fo no-spotify artists -->
+<!-- Support for editing artists (christopher) -->
+
+
+<style>
+
+  .artistwrapper {
+    display: inline;
+  }
+
+</style>
+
+
+<!-- 
+
 </div>
+</div> -->
 
-
-<br>
+<!-- <br>
     <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
-<br>
-</div>
+<br> -->
+
   <!-- </div> -->
 <!-- <center> -->
 {% endblock content %}
+
+<!-- <div class="section categories">
+  <div class="container">
+    <h3 class="section-heading">Responsive Images</h3>
+    <p class="section-description">Skeleton images sit easily in grid with .u-max-full-width class. I suggest exploring solution to serving different images based on device size.</p>
+    
+    <div class="row">
+      <div class="one-half column category">
+        <img class="u-max-full-width" src="images/placeholder.png">
+      </div>
+      <div class="one-half column category">
+        <img class="u-max-full-width" src="images/placeholder.png">
+      </div>
+    </div>
+
+
+  </div>
+</div> -->

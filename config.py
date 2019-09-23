@@ -24,4 +24,4 @@ class TestingConfig(Config):
 
 #For local debugging
 #export APP_SETTINGS="config.DevelopmentConfig"
-#export DATABASE_URL="postgresql://postgres:@localhost/festivalg"
+#export DATABASE_URL="postgresql://postgres:qbj23ezn@localhost/festivalg"
