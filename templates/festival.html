@@ -40,7 +40,7 @@
 <div class="artistwrapper">
     <div class="two columns">
     <p><b> {% print(data.name) %} </b></p>
-    <img src="{% print(data.img) %}" width="300px" height="300px">
+    <img class ="u-max-full-width" src="{% print(data.img) %}" width="300px" height="300px">
   </div>
 </div>
 {% endfor %}
@@ -50,26 +50,10 @@
 <!-- Support for editing artists (christopher) -->
 
 
-<style>
 
-  .artistwrapper {
-    display: inline;
-  }
-
-</style>
+<!--  <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>-->
 
 
-<!-- 
-
-</div>
-</div> -->
-
-<!-- <br>
-    <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
-<br> -->
-
-  <!-- </div> -->
-<!-- <center> -->
 {% endblock content %}
 
 <!-- <div class="section categories">
