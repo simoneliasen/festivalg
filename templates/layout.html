@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Festivalg giver en oversigt over den danske kunstenre og festivaller, så du lettere kan danne dig et overblik over de enkelte line-ups, og tage dit festivalg!">
   <!-- Custom css-->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
   <!-- Skeleton predefined CSS -->
@@ -26,17 +27,15 @@
 {% block content %}{% endblock %}
 
 </body>
-<script type="text/javascript">
-  if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-          navigator.serviceWorker.register("{{ url_for('static', filename='sw.js') }}").then(function(registration) {
-              // Registration was successful
-              console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }, function(err) {
-              // registration failed :(
-              console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-  }
-</script>
+
+<script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker
+               .register('../static/sw.js')
+               .then(function() { console.log("Service Worker Registered"); });
+    }
+    </script>
+
+
+
 </html>

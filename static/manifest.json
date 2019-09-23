@@ -1,0 +1,21 @@
+{
+    "short_name": "Festivalg",
+    "name": "Festivalg",
+    "icons": [
+      {
+        "src": "/img/logo192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/img/logo512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/maps/?source=pwa",
+    "background_color": "#fb9d46",
+    "display": "standalone",
+    "scope": "/maps/",
+    "theme_color": "#4DAEA1"
+  }
