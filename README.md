@@ -16,7 +16,13 @@ https://festivalg99.herokuapp.com/
  
  ## To do:
  - Update gif preview to newer version
- - Optimize Sqlalchemy query for getdata.py
- - Add searchbar functionality again
- - Introduce animation on artist page load
- - Add festival sites (w. weather, prices etc)
+ - Handle non-spotify artists.
+ - optimize ui
+ - slider for festivals
+ - grid display for artists on festivalpage
+ - additional data on festivals (weather, date price, links etc.)
+ - PWA support
+ - Link to artist page from festival page
+ - Relational database structure?
+ - Refactor some of the code.
+ 
