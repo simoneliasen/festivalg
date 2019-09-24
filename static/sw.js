@@ -1,15 +1,5 @@
 var CACHE_NAME = 'festivalg-v1';
 var urlsToCache = [
-  '/',
-  '/../templates/layout.html',
-  '/../templates/home.html',
-  '/../templates/artist.html',
-  '/../templates/festival.html',
-  '/../templates/home.html',
-  '/css/main.css',
-  '/css/normalize.css',
-  '/css/skeleton.css',
-  '/js/autocomplete.js'
 ];
 
 self.addEventListener('install', function(event) {
