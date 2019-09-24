@@ -5,13 +5,6 @@ self.addEventListener('install', e => {
     caches.open(cacheName).then(cache => {
       return cache.addAll([
         `/`,
-        `/app.py`,
-        `/getdata.py`,
-        `/config.py`,
-        `/manage.py`,
-        `/static/comlink.global.js`,
-        `/static/messagechanneladapter.global.js`,
-        `/static/pwacompat.min.js`,
         `/static/img/192logo.png`,
         `/static/img/512logo.png`,
         `/static/img/boyband.jpg`,
@@ -32,19 +25,12 @@ self.addEventListener('install', e => {
         `/static/img/soleima.jpg`,
         `/static/img/spot.png`,
         `/static/img/tinderbox.png`,
-        `/static/fonts/miss_rhinetta_webfont.ttf`,
-        `/static/fonts/miss_rhinetta_webfont.woff`,
-        `/static/fonts/miss_rhinetta_webfont.woff2`,
         `/static/fonts/Miss Rhinetta.ttf`,
         `/static/fonts/Miss Rhinetta.otf`,
         `/static/css/main.css`,
         `/static/css/normalize.css`,
         `/static/css/skeleton.css`,
-        `/static/js/autocomplete.js`,
-        `/templates/artist.html`,
-        `/templates/home.html`,
-        `/templates/festival.html`,
-        `/templates/layout.html`,
+        `/static/js/autocomplete.js`
       ])
           .then(() => self.skipWaiting());
     })
