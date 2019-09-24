@@ -21,16 +21,16 @@
   <meta name="theme-color" content="#fb9d46"/>
   <!-- If title is declared, insert after name (ex. festivalg - artists -->
  
-
   {% if title %}
   <title>Festivalg -  {{ title }}</title>
   {% else %}
   <title>Festivalg</title>
   {% endif %}
+
 </head>
 <body>
 
-<!--content for pages goes  here -->
+<!--content for page-->
 {% block content %}{% endblock %}
 
 </body>
@@ -42,7 +42,5 @@
                .then(function() { console.log("Service Worker Registered"); });
     }
     </script>
-
-
 
 </html>
