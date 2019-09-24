@@ -40,7 +40,7 @@ self.addEventListener('install', e => {
         `/static/css/main.css`,
         `/static/css/normalize.css`,
         `/static/css/skeleton.css`,
-        `/static/js/autocomplete.js`
+        `/static/js/autocomplete.js`,
         `/templates/artist.html`,
         `/templates/home.html`,
         `/templates/festival.html`,
