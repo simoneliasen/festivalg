@@ -3,19 +3,19 @@
     "name": "Festivalg",
     "icons": [
       {
-        "src": "/img/logo192.png",
+        "src": "/static/img/192logo.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "/img/logo512.png",
+        "src": "/static/img/512logo.png",
         "type": "image/png",
         "sizes": "512x512"
       }
     ],
-    "start_url": "/maps/?source=pwa",
+    "start_url": "./templates/home.html",
     "background_color": "#fb9d46",
     "display": "standalone",
-    "scope": "/maps/",
+    "scope": ".",
     "theme_color": "#4DAEA1"
   }
