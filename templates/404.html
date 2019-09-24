@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<div class="404wrapper">
+<div class="wrapper404">
     <div class="container">
         <div class="row">
             <div class="one-half column">
-                <img src="../static/img/404.jpg">
+                <img src="../static/img/404.jpg" class="u-max-full-width">
             </div>
             <div class="one-half column">
                 <h2 id="woops"><b>Woops!<b></h2>
@@ -16,5 +16,25 @@
     </div>
 </div>
 
+
+<style>
+
+    .wrapper404 {
+        width: 100%;
+        height: 100%;
+        background-color:#EEB274 ;
+    }
+    #woops {
+        color: red;
+    }
+
+    h4 {
+        color: white;
+
+    }
+    p {
+        color: white;
+    }
+</style>
 
 {% endblock content %}
