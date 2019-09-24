@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="Festivalg giver en oversigt over den danske kunstenre og festivaller, så du lettere kan danne dig et overblik over de enkelte line-ups, og tage dit festivalg!">
-  <!-- Custom css-->
+  <!-- Css-->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-  <!-- Skeleton predefined CSS -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/skeleton.css') }}">
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/192logo.png') }}">
   <!-- Fonts  -->
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   <!-- PWA Support -->
@@ -38,7 +38,7 @@
 <script>
     if('serviceWorker' in navigator) {
       navigator.serviceWorker
-               .register('/../sw.js')
+               .register('/sw.js')
                .then(function() { console.log("Service Worker Registered"); });
     }
     </script>
