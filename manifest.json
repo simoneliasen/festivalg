@@ -1,6 +1,7 @@
 {
     "short_name": "Festivalg",
     "name": "Festivalg",
+    "description": "Undersøg de danske festivallers lineup",
     "icons": [
       {
         "src": "/static/img/192logo.png",
@@ -13,9 +14,9 @@
         "sizes": "512x512"
       }
     ],
-    "start_url": "/.../templates/home.html",
+    "start_url": "/?homescreen=1",
+    "scope": "/",
     "background_color": "#fb9d46",
     "display": "standalone",
-    "scope": ".",
     "theme_color": "#4DAEA1"
   }
