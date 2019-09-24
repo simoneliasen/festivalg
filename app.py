@@ -21,6 +21,7 @@ class Artist(db.Model):
     def __repr__(self):
         return f"Artist('{self.name}', '{self.festival}', '{self.image}', '{self.uri}')"
 
+
 @app.before_request
 def before_request():
     if not request.is_secure and app.env != "development":
