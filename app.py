@@ -21,13 +21,18 @@ class Artist(db.Model):
     def __repr__(self):
         return f"Artist('{self.name}', '{self.festival}', '{self.image}', '{self.uri}')"
 
-
+#HTTPS redirect
 @app.before_request
 def before_request():
     if not request.is_secure and app.env != "development":
         url = request.url.replace("http://", "https://", 1)
         code = 301
         return redirect(url, code=code)
+
+#404-page
+@app.errorhandler(404)
+def page_not_found(error):
+   return render_template('404.html', title = '404'), 404
 
 # Home page
 @app.route('/', methods=['GET'])
