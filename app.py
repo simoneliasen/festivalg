@@ -5,6 +5,8 @@ from sqlalchemy.orm import sessionmaker
 import json
 import os
 import psycopg2
+import OpenSSL
+
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
@@ -69,7 +71,7 @@ def artist():
                 return render_template("festival.html", search_input = search_input, festival_data = festival_data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, ssl_context='adhoc')
 
 
 
