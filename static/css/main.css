@@ -26,6 +26,10 @@ body, html {
   font-style: normal;
 }
 /* 2. FRONT PAGE */
+.container.homepage{
+  padding-bottom: 35vh;
+}
+
 #logo {
   padding-top: 20%;
   color: #2d3436;
@@ -65,7 +69,7 @@ button:hover {
   text-align: center;
   margin: 0;
   font-size: 1rem;
-  padding-bottom: 35vh;
+  /* padding-bottom: 35vh; */
 }
 .festival, .artist {
   margin: 5px;
@@ -176,7 +180,7 @@ footer {
   border-top: none;
   z-index: 99;
   /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
+  top: 40px;
   left: 0;
   right: 0;
 }
@@ -189,6 +193,7 @@ footer {
 /*when hovering an item:*/
 .autocomplete-items div:hover {
   background-color: #e9e9e9;
+  
 }
 /*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
