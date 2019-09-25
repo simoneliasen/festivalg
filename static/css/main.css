@@ -1,15 +1,20 @@
 /* INDEX OF STYLESHEET */
+/*  */ /*  */ /*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  */
+/*  -------------------------------------------------------------------------------- */
 /* 1. GENERAL */
-/* 2. FRONT PAGE */
-/* 2.1. SEARCH AUTOCOMPLETE */
-/* 3. ARTIST PAGE */
-/* 4. FESTIVAL PAGE */
+/* 2. FRONT PAGE 
+/* 3. NAVIGATION */
+/* 4. FOOTER */
+/* 5. SEARCH AUTOCOMPLETION*/
+/* 6. MOBILE */
+/*  */ /*  */ /*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  */
+/*  -------------------------------------------------------------------------------- */
 
 /* 1. GENERAL */
-body {
+body, html {
   background: #fb9d46;
-  color: #4DAEA1;
-  /* overflow: hidden; */
+  width: 100%;
+  height: 100%;
 }
 
 @font-face {
@@ -21,16 +26,13 @@ body {
   font-style: normal;
 }
 /* 2. FRONT PAGE */
-
 #logo {
-  margin-top: 20%;
-  /* font-family: 'Lato', sans-serif; */
+  padding-top: 20%;
   color: #2d3436;
   font-size: 90px;
   font-weight: 500;
   text-align: center;
   font-family: 'miss_rhinettaregular', sans-serif;
-  
 }
 
 #subtext {
@@ -38,17 +40,16 @@ body {
   font-size: 1.7rem;
 }
 
-/* form {
-  margin-bottom: 0rem;
-  display: inline;
-} */
+form {
+  text-align: center;
+}
 .autocomplete {
   display: inline
 }
+
 /* Search form */
 input[type="text"] {
   width: 300px;
-  /* display: inline; */
 }
 
 /* Search button */
@@ -64,6 +65,7 @@ button:hover {
   text-align: center;
   margin: 0;
   font-size: 1rem;
+  padding-bottom: 35vh;
 }
 .festival, .artist {
   margin: 5px;
@@ -73,7 +75,6 @@ button:hover {
 .festivalswrapper {
   background-color: #006E5F;
   width: 100%;
-  margin-top: 30vh;
   padding-top: 1%;
   padding-bottom: 1.5%
 
@@ -83,7 +84,6 @@ button:hover {
   width: 100%;
   padding-top: 1.5%;
   padding-bottom: 1.5%
-
 }
 
 .subheadingwrap{
@@ -93,7 +93,40 @@ button:hover {
   padding-bottom: 1vh;
 }
 
+/* 3. NAVIGATION */
+#navlogo {
+  display: inline;
+  color: #2d3436;
+  font-family: 'miss_rhinettaregular', sans-serif;
+  font-size: 35px;
+}
 
+.menu {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.menu > div > p {
+  display: inline;
+  padding-left: 2vh;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+
+}
+.menuitems {
+  display: inline;
+  position:absolute;
+  right: 0;
+  padding-top: 13px;
+}
+
+header {
+  background-color: rgba(4, 6, 8, 0.5);
+  padding-bottom
+}
+
+/* 4. FOOTER */
 .twelve.column {
   background-color: #2d3436;
 }
@@ -116,7 +149,8 @@ button:hover {
 
 footer {
   width: 100%;
-  min-height: 300px;
+  padding-top: 2vh;
+  min-height: 400px;
   background-color: #2d3436;
 }
 
@@ -129,8 +163,7 @@ footer {
   font-weight: bold;
 }
 
-
-/* SEARCH AUTOCOMPLETE */
+/* 5. SEARCH AUTOCOMPLETE */
 /*the container must be positioned relative:*/
 .autocomplete {
   position: relative;
@@ -163,8 +196,7 @@ footer {
   color: #ffffff;
 }
 
-
-/*  mobile */
+/*  MOBILE */
 @media (max-width: 500px) {
   input[type="email"],
 input[type="number"],

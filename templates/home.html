@@ -1,108 +1,57 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- Center content within the middle -->
-<!-- <header>
+<!-- Navbar: under construction -->
+ <header>
   <div class="container nav">
-    <div class="menu">
+    <!-- <div class="menu">
       <h4 id="navlogo">Festivalg</h4>
       <div class="menuitems">
       <p>Hvem er vi?</p>
       <p>Kontakt os</p>
     </div>
-    </div>
+    </div> -->
   </div>
-</header> -->
+</header> 
 
+<div class="container homepage">
 
-<style>
-  #navlogo {
-    display: inline;
-    color: #2d3436;
-    font-family: 'miss_rhinettaregular', sans-serif;
-    font-size: 35px;
-  }
+  <h1 id="logo"> Festivalg </h1>
+  <h2 id="subtext"> Find solbrillerne og shortsne frem, vi skal på festival! </h2>
 
-
-  .menu {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-
-  .menu > div > p {
-    display: inline;
-    padding-left: 2vh;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    font-weight: bold;
- 
-
-
-
-
-  
-  }
-  .menuitems {
-    display: inline;
-    position:absolute;
-    right: 0;
-    padding-top: 13px;
-  }
-
-  header {
-    background-color: rgba(4, 6, 8, 0.5);
-    padding-bottom
-  
-  }
-</style> 
-
-<div class="container">
-
-<!-- Logo + appetizer -->
-<h1 id="logo"> Festivalg </h1>
-<center><h2 id="subtext"> Find solbrillerne og shortsne frem, vi skal på festival! </h2></center>
-
-<!-- Search form -->
-<center>
   <form autocomplete="off" action="/artist" method="post">
     <div class="autocomplete">
-     <input id="myInput" type="text" placeholder="Søg efter festival eller kunstner.." name="search">
-     <button type="submit" id="myBtn"><i class="fa fa-search"></i></button>
-   </form>
-</center>
+      <input id="myInput" type="text" placeholder="Søg efter festival eller kunstner.." name="search">
+      <button type="submit" id="myBtn"><i class="fa fa-search"></i></button>
+  </form>
 
-<!-- Import autocomplete js code  -->
-<script src="static/js/autocomplete.js"></script>
+<!-- Import Autocompletion  -->
+  <script src="static/js/autocomplete.js"></script>
 
-<!-- load artist data from sql + executes js code -->
-<script>
-var artists = {{ roskildeartists|safe }}; // Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
-autocomplete(document.getElementById("myInput"), artists); /*Function that executes autocomplete feature */
-</script>
+<!-- load artist names from db and trigger search on enter-->
+  <script>
+    let artists = {{ artistnames|safe }}; // Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
+    autocomplete(document.getElementById("myInput"), artists); /*Function that executes autocomplete feature */
 
-<!-- Trigger search form on enter key -->
-<script>
-var input = document.getElementById("myInput");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("myBtn").click();
-  }
-});
-</script>
+    let input = document.getElementById("myInput");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("myBtn").click();
+      }
+    });
+  </script>
 
-<br>
-
-<center>
   <p id="subsubtext"> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p>
-</center>
-<br><br>
+
+</div>
 </div>
 
 <!-- Popular festivals section -->
+
 <center>
 <div class="festivalswrapper">
-  <h2 class="subheadingwrap">Festivaller</h2>
+  <!-- <h2 class="subheadingwrap">Festivaller</h2> -->
   <div class="popularfestivals">
     <img src="/static/img/roskilde.png" alt="Roskilde festival" height="auto" width="100px">
     <img src="/static/img/northside.png" alt="Northside" height="auto" width="200px">
@@ -115,6 +64,10 @@ input.addEventListener("keyup", function(event) {
   </div>
 </div>
 </center>
+
+
+
+
 
 <!-- Popular artists selection -->
 <center>

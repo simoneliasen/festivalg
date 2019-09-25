@@ -48,8 +48,8 @@ def home():
         momentarystorage.append(artist.festival)
     distinctvalues = set(momentarystorage)
     distinctlist = list(distinctvalues)
-    roskildeartists = (json.dumps(distinctlist))
-    return render_template('home.html', roskildeartists=roskildeartists)
+    artistnames = (json.dumps(distinctlist))
+    return render_template('home.html', artistnames=artistnames)
  
 @app.route('/sw.js', methods=['GET'])
 def sw():
