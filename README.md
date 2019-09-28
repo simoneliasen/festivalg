@@ -7,10 +7,8 @@ This project was made in the summer of 2019 with an emphasis on practising Pytho
 ## Preview of the application
 ![gif of application](http://korius.dk/github/festivalg.gif)
 
-This application is currently under maintance, as it's being rewritten going form mysql.connector and mysql
-to sqlalchemy and postgres.
 
-Here's a link of the current progress:
+Here's a to a working prototype (current progress):
 https://festivalg99.herokuapp.com/
  
  
