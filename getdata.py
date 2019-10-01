@@ -51,14 +51,14 @@ class SpotifyData():
                     try:
                         artistdict['img'] = items[0]['images'][0]['url']
                     except:
-                        artistdict['img'] = 'None'
+                        artistdict['img'] = '../static/img/unknown.jpg'
                     try:
                         artistdict['uri'] = items[0]['external_urls']['spotify']
                     except:
                         artistdict['uri'] = 'None'
                 #If no spotify data is found on the name provided from webscraper list append none-values
                 else:
-                    artistdict['img'] = 'None'
+                    artistdict['img'] = '../static/img/unknown.jpg'
                     artistdict['uri'] = 'None'
             # Append related festival from scraped data to dict        
             artistdict['festival'] = artists[1]

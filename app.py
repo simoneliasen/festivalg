@@ -72,10 +72,10 @@ def artist():
                 return render_template("festival.html", search_input = search_input, festival_data = festival_data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
 
 #Add for local development
-    #app.run(debug=True, ssl_context='adhoc')
+    app.run(debug=True, ssl_context='adhoc')
 
 
 

@@ -69,7 +69,7 @@ button:hover {
   text-align: center;
   margin: 0;
   font-size: 1rem;
-  /* padding-bottom: 35vh; */
+
 }
 .festival, .artist {
   margin: 5px;
@@ -199,6 +199,24 @@ footer {
 .autocomplete-active {
   background-color: DodgerBlue !important;
   color: #ffffff;
+}
+
+
+/* FESTIVAL PAGE */
+
+.three.columns.artists {
+  text-align: center;
+  position: relative;
+}
+
+#artistname {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /*  MOBILE */

@@ -2,7 +2,7 @@
 {% block content %}
 
 
-
+<a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
 <div class="container">
 <!-- Festival name, Image date-->
 <br><br>
@@ -11,10 +11,7 @@
   <img src="../static/img/smukfest.png">
   <h1><b> {% print(search_input) %} </b></h1>
 
-
-
 <p><b> 7-9 August 2020</b></p>
-
 
 <!-- Festival description -->
 <p>Smukfest, også kendt som Skanderborg Festival eller Danmarks Smukkeste Festival, er en dansk musikfestival som afholdes hver sommer i anden weekend af august i Skanderborg under temaet "Musik & Bøgetræer".
@@ -35,49 +32,16 @@
 </center>
 
 <!-- Artist grid -->
-
 <div class="container">
-  <center>
 {% for data in festival_data %}
 <div class="artistwrapper">
-    <div class="three columns">
-    <p><b> {% print(data.name) %} </b></p>
+    <div class="three columns artists">
+    <p id="artistname"><b> {% print(data.name) %} </b></p>
     <img class ="u-max-full-width" src="{% print(data.img) %}" width="200px" height="200px">
   </div>
 </div>
-
 {% endfor %}
-</center>
 </div>
 </div>
-
-
-
-<!-- Add artist-page on-click -->
-<!-- Implement support fo no-spotify artists -->
-<!-- Support for editing artists (christopher) -->
-
-
-
-<!--  <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>-->
-
 
 {% endblock content %}
-
-<!-- <div class="section categories">
-  <div class="container">
-    <h3 class="section-heading">Responsive Images</h3>
-    <p class="section-description">Skeleton images sit easily in grid with .u-max-full-width class. I suggest exploring solution to serving different images based on device size.</p>
-    
-    <div class="row">
-      <div class="one-half column category">
-        <img class="u-max-full-width" src="images/placeholder.png">
-      </div>
-      <div class="one-half column category">
-        <img class="u-max-full-width" src="images/placeholder.png">
-      </div>
-    </div>
-
-
-  </div>
-</div> -->
