@@ -74,8 +74,7 @@ def artist():
 if __name__ == '__main__':
     app.run(debug=True)
 
-
-    #Add for local development
+#Add for local development
     #app.run(debug=True, ssl_context='adhoc')
 
 
