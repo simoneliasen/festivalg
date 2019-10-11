@@ -39,7 +39,6 @@ def page_not_found(error):
 
 # Home page
 @app.route('/', methods=['GET'])
-@app.route('/home')
 def home():
     momentarystorage = []
     artists = Artist.query.all()
@@ -54,6 +53,8 @@ def home():
 @app.route('/sw.js', methods=['GET'])
 def sw():
     return app.send_static_file('sw.js')
+
+
 
 # Artist page
 @app.route('/artist', methods=["GET", "POST"])
