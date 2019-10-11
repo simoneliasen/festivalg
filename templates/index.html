@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Navbar: under construction -->
+<div class="herowrapper">
+  <header>
+    <div class="container nav">
+      <div class="menu">
+        <h4 id="navlogo">Festivalg</h4>
+        <div class="menuitems">
+          <p>Hvem er vi?</p>
+          <p>Kontakt os</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="herowrapper">
+    <div class="container homepage">
+      <h1 id="logo"> Festivalg </h1>
+      <h2 id="subtext"> Find solbrillerne og shortsne frem, vi skal på festival! </h2>
+
+      <form autocomplete="off" action="/artist" method="post">
+        <div class="autocomplete">
+          <input id="myInput" type="text" placeholder="Søg efter festival eller kunstner.." name="search">
+          <button type="submit" id="myBtn"><i class="fa fa-search"></i></button>
+      </form>
+
+      <!-- Import Autocompletion  -->
+      <script src="static/js/autocomplete.js"></script>
+
+      <!-- load artist names from db and trigger search on enter-->
+      <script>
+        let artists = {{ artistnames| safe }}; // Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
+        autocomplete(document.getElementById("myInput"), artists); /*Function that executes autocomplete feature */
+
+        let input = document.getElementById("myInput");
+        input.addEventListener("keyup", function (event) {
+          if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("myBtn").click();
+          }
+        });
+      </script>
+
+      <p id="subsubtext"> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p>
+
+    </div>
+  </div>
+</div>
+
+<!-- Popular festivals section -->
+<div class="festivalswrapper">
+  <div class="container">
+    <div class="popularfestivals">
+      <img src="/static/img/roskilde.png" alt="Roskilde festival" height="auto" width="62.5px">
+      <img src="/static/img/northside.png" alt="Northside" height="auto" width="125px">
+      <img src="/static/img/tinderbox.png" alt="Tinderbox" height="auto" width="156.25px">
+      <img src="/static/img/smukfest.png" alt="Smukfest" height="auto" width="62.5px">
+      <img src="/static/img/skive.png" alt="Skive Festival" height="auto" width="62.5px">
+      <img src="/static/img/groen.png" alt="Grøn koncert" height="auto" width="62.5px">
+      <img src="/static/img/Distortion.png" alt="Distortion" height="auto" width="62.5px">
+      <!-- <img src="/static/img/spot.png" alt="Spot Festival" height="auto" width="62.5px"> -->
+    </div>
+  </div>
+</div>
+
+<!-- Popular artists selection -->
+<div class="artistwrap">
+  <div class="container">
+    <h2 class="subheadingwrap">Eftertragtede kunstnere</h2>
+    <div class="popularfestivals">
+      <img src="/static/img/mekdes.jpg" alt="Roskilde festival" height="auto" width="75px">
+      <img src="/static/img/rapman.jpg" alt="Northside" height="auto" width="75px">
+      <img src="/static/img/soleima.jpg" alt="Tinderbox" height="auto" width="75px">
+      <img src="/static/img/dude.jpg" alt="Smukfest" height="auto" width="75px">
+      <img src="/static/img/saveus.jpg" alt="Skive Festival" height="auto" width="75px">
+      <img src="/static/img/marley.jpg" alt="Grøn koncert" height="auto" width="75px">
+      <img src="/static/img/boyband.jpg" alt="Distortion" height="auto" width="75px">
+      <img src="/static/img/marsboiis.jpg" alt="Spot Festival" height="auto" width="75px">
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container foots">
+    <div class="row">
+      <div class="twelve column">
+        <div class="one-third column">
+          <br>
+          <b>Adress:</b> <br>
+          8100 E. Madeup St.<br>
+          Sin City, OK 73162<br><br>
+          <b>Mail:</b><br>
+          madeup@gmail.com<br><br>
+          <b>Phone:</b><br>
+          + 45 23 58 29
+          <br>
+          <br>
+        </div>
+        <div class="one-third column">
+          <br>
+          <b>Sitemap:</b><br><br>
+          <a href="#">Home</a><br>
+          <a href="#">Artists</a><br>
+          <a href="#">Festivals</a><br>
+          <a href="#">About us</a><br>
+          <a href="#">Contact us</a><br>
+          <a href="#">Jobs</a>
+        </div>
+        <div class="one-third column">
+          <br><b> Follow us:</b><br><br>
+          <a href="#">Facebook</a><br>
+          <a href="#">Twitter</a><br>
+          <a href="#">Instagram</a><br>
+          <a href="#">Linkedin</a><br>
+          <a href="#">Github</a><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</footer>
+
+
+<script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register("sw.js").then(function(registration) {
+                // Registration was successful
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+                // registration failed :(
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+</script>
+
+{% endblock content %}

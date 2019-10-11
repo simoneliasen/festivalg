@@ -48,7 +48,7 @@ def home():
     distinctvalues = set(momentarystorage)
     distinctlist = list(distinctvalues)
     artistnames = (json.dumps(distinctlist))
-    return render_template('home.html', artistnames=artistnames)
+    return render_template('index.html', artistnames=artistnames)
  
 @app.route('/sw.js', methods=['GET'])
 def sw():
