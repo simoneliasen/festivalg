@@ -35,7 +35,7 @@ def before_request():
 #404-page
 @app.errorhandler(404)
 def page_not_found(error):
-   return render_template('404.html', title = '404'), 404
+   return render_template('index.html', title = '404'), 404
 
 # Home page
 @app.route('/', methods=['GET'])
