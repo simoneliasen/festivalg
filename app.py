@@ -70,6 +70,10 @@ def artist():
         for element in festival_data:
             if element in festival_data:
                 return render_template("festival.html", search_input = search_input, festival_data = festival_data)
+        else:
+            message = "No artist or festival matched your input"
+            return message
+    
 
 if __name__ == '__main__':
     #app.run(debug=True)

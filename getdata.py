@@ -72,6 +72,11 @@ SpotifyData = SpotifyData()
 FestivalScraper.roskildescraper()
 FestivalScraper.smukfestscraper()
 SpotifyData.getdata(FestivalScraper)
+
+#Drops former db and initalizes new one (momentarily until site is more stable)
+db.drop_all()
+db.create_all()
+
 #Append artistobjects to db
 for artistdict in SpotifyData.artistobjects:
     artist = Artist(**artistdict)

@@ -5,26 +5,33 @@
   <br>
   <br>
 
-<div class="container">
+  <div class="container">
 
-{% for data in artist_data %}
-<h2><b> {% print(data.name) %} </b></h2>
+    {% for data in artist_data %}
+    <h2><b> {% print(data.name) %} </b></h2>
 
-<!-- Image -->
-<img src="{% print(data.img) %}" width="300px" height="300px">
-<br>
-<!-- Spotify URI (needs formating) -->
-<iframe src="{% print(data.uri.replace("/artist/", "/embed/artist/")) %}" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-<br>
+    <!-- Image -->
+    <img src="{% print(data.img) %}" width="300px" height="300px">
+    <br><br>
+    <!-- Spotify URI (needs formating) -->
+    {% if data.uri != "None": %}
+    <iframe src="{% print(data.uri.replace("/artist/", "/embed/artist/")) %}" width="300" height="400" frameborder="0"
+      allowtransparency="true" allow="encrypted-media"></iframe>
+    {% else: %}
+    {% print('Kunne ikke finde musik fra denne kunstner på spotify') %}
+    <br>
+    {% print('Kontakt os hvis der er sket en fejl') %}
 
-<!-- Festival -->
-<p> <b>Spiller på: </b></p>
-<p>{% print(data.festival) %}</p>
-<br>
-{% endfor %}
+    {% endif %}
+    <br><br>
+    <!-- Festival -->
+    <p> <b>Spiller på: </b></p>
+    <p>{% print(data.festival) %}</p>
+    <br>
+    {% endfor %}
 
     <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
-<br>
+    <br>
   </div>
-<center>
-{% endblock content %}
+  <center>
+    {% endblock content %}

@@ -4,43 +4,47 @@
 
 <a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
 <div class="container">
-<!-- Festival name, Image date-->
-<br><br>
+  <!-- Festival name, Image date-->
+  <br><br>
 
-<center>
-  <img src="../static/img/smukfest.png">
-  <h1><b> {% print(search_input) %} </b></h1>
+  <center>
+    <img src="../static/img/smukfest.png">
+    <h1><b> {% print(search_input) %} </b></h1>
 
-<p><b> 7-9 August 2020</b></p>
+    <p><b> 7-9 August 2020</b></p>
 
-<!-- Festival description -->
-<p>Smukfest, også kendt som Skanderborg Festival eller Danmarks Smukkeste Festival, er en dansk musikfestival som afholdes hver sommer i anden weekend af august i Skanderborg under temaet "Musik & Bøgetræer".
+    <!-- Festival description -->
+    <p>Smukfest, også kendt som Skanderborg Festival eller Danmarks Smukkeste Festival, er en dansk musikfestival som
+      afholdes hver sommer i anden weekend af august i Skanderborg under temaet "Musik & Bøgetræer".
 
-    Musikken og diverse happenings foregår under bøgetræer og ved nærliggende søer og deraf navnet "Danmarks Smukkeste Festival." Festivalen har de senere år ofte haft udsolgt.
-    
-    Smukfest fokuserer fortrinvis på dansk musik med både kommende talenter/grupper samt gamle kendinge, men har altid et par store udenlandske navne på plakaten.
-    
-    Festivalens maskot er FestiWalther, der er en musikglad skovtrold født 5. juli 1579 i Skanderborgs bøgeskove, og ideen til den første festval blev skabt den 5. juli 1979 – på Walthers 400 års fødselsdag.</p>
+      Musikken og diverse happenings foregår under bøgetræer og ved nærliggende søer og deraf navnet "Danmarks Smukkeste
+      Festival." Festivalen har de senere år ofte haft udsolgt.
 
-<!--  tickets -->
-<a href="https://smukshop.dk/" class="button">KØB BILLET</a>
+      Smukfest fokuserer fortrinvis på dansk musik med både kommende talenter/grupper samt gamle kendinge, men har altid
+      et par store udenlandske navne på plakaten.
+
+      Festivalens maskot er FestiWalther, der er en musikglad skovtrold født 5. juli 1579 i Skanderborgs bøgeskove, og
+      ideen til den første festval blev skabt den 5. juli 1979 – på Walthers 400 års fødselsdag.</p>
+
+    <!--  tickets -->
+    <a href="https://smukshop.dk/" class="button">KØB BILLET</a>
 
 
-<br><br><br>
-<h3><b> Hvem spiller på  {% print(search_input) %} ?</b></h3>
+    <br><br><br>
+    <h3><b> Hvem spiller på {% print(search_input) %} ?</b></h3>
 </div>
 </center>
 
 <!-- Artist grid -->
 <div class="container">
-{% for data in festival_data %}
-<div class="artistwrapper">
+  {% for data in festival_data %}
+  <div class="artistwrapper">
     <div class="three columns artists">
-    <p id="artistname"><b> {% print(data.name) %} </b></p>
-    <img class ="u-max-full-width" src="{% print(data.img) %}" width="200px" height="200px">
+      <p id="artistname" style="text-shadow: 2px 2px #797979;"><b> {% print(data.name) %} </b></p>
+      <img class="u-max-full-width" src="{% print(data.img) %}" width="200px" height="200px">
+    </div>
   </div>
-</div>
-{% endfor %}
+  {% endfor %}
 </div>
 </div>
 
