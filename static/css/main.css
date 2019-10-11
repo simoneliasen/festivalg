@@ -30,6 +30,15 @@ body, html {
   padding-bottom: 35vh;
 }
 
+.herowrapper {
+  background:linear-gradient(0deg,rgba(251, 157, 70, 0.8),rgba(251, 157, 70, 0.8)),url('../gif/testbg.gif');
+  background-size: cover;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+
 #logo {
   padding-top: 20%;
   color: #2d3436;
@@ -93,6 +102,7 @@ button:hover {
 .subheadingwrap{
   font-family: 'miss_rhinettaregular', sans-serif;
   font-size: 66px;
+  text-align: center;
   margin: 0;
   padding-bottom: 1vh;
 }
@@ -102,19 +112,19 @@ button:hover {
   display: inline;
   color: #2d3436;
   font-family: 'miss_rhinettaregular', sans-serif;
-  font-size: 35px;
+  font-size: 50px;
 }
 
 .menu {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .menu > div > p {
   display: inline;
   padding-left: 2vh;
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
 
 }
@@ -122,11 +132,11 @@ button:hover {
   display: inline;
   position:absolute;
   right: 0;
-  padding-top: 13px;
+  padding-top: 20px;
 }
 
 header {
-  background-color: rgba(4, 6, 8, 0.5);
+  background-color: rgba(34, 34, 34, 0.2);
   padding-bottom
 }
 

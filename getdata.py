@@ -78,3 +78,6 @@ for artistdict in SpotifyData.artistobjects:
     db.session.add(artist)
     db.session.commit()
 
+
+
+
