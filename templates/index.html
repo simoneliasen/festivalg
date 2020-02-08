@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- Navbar: under construction -->
+<!-- Navbar: under construction 
 <div class="herowrapper">
   <header>
     <div class="container nav">
@@ -14,12 +14,11 @@
       </div>
     </div>
   </header>
-
+-->
   <div class="herowrapper">
     <div class="container homepage">
       <h1 id="logo"> Festivalg </h1>
-      <h2 id="subtext"> Find solbrillerne og shortsne frem, vi skal på festival! </h2>
-
+      <h2 id="subtext"><i>  Find solbrillerne og shortsne frem, vi skal på festival!</i> </h2>
       <form autocomplete="off" action="/artist" method="post">
         <div class="autocomplete">
           <input id="myInput" type="text" placeholder="Søg efter festival eller kunstner.." name="search">
@@ -31,7 +30,7 @@
 
       <!-- load artist names from db and trigger search on enter-->
       <script>
-        let artists = {{ artistnames| safe }}; // Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
+        let artists = {{ artistnames | safe }}; // Actual storage of artists (roskildeartists (python pulls from db to python JSON, to javascript))
         autocomplete(document.getElementById("myInput"), artists); /*Function that executes autocomplete feature */
 
         let input = document.getElementById("myInput");
@@ -41,17 +40,30 @@
             document.getElementById("myBtn").click();
           }
         });
+
+        //Flickity
+        var elem = document.querySelector('.main-carousel');
+        var flkty = new Flickity( elem, {
+        // options
+        cellAlign: 'left',
+        contain: true
+});
+// element argument can be a selector string
+//   for an individual element
+var flkty = new Flickity( '.main-carousel', {
+  // options
+});
       </script>
-
       <p id="subsubtext"> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p>
-
     </div>
   </div>
 </div>
 
 <!-- Popular festivals section -->
+<!--
 <div class="festivalswrapper">
-  <div class="container">
+
+  <!-- Insert slider
     <div class="popularfestivals">
       <img src="/static/img/roskilde.png" alt="Roskilde festival" height="auto" width="62.5px">
       <img src="/static/img/northside.png" alt="Northside" height="auto" width="125px">
@@ -63,29 +75,13 @@
     </div>
   </div>
 </div>
-
-<!-- Popular artists selection -->
+-->
+<!-- Popular artists selection  (could also be an img and a story)
 <div class="artistwrap">
   <div class="container">
 
-    <p id="ctaText"> Få de seneste nyheder om din favorit festival </p>
-    <button id="tilmeldNyhedsbrev">Tilmeld nyhedsbrev </button>
 
-    <style>
-      #ctaText {
-        display: inline;
-        padding-top: 20px;
-        font-weight: bold;
-        font-size: 24px;
-      }
-
-      #tilmeldNyhedsbrev {
-        margin-left: 5px;
-        font-size: 18px;
-      }
-    </style> 
-
-    <!-- <h2 class="subheadingwrap">Eftertragtede kunstnere</h2>
+     <h2 class="subheadingwrap">Eftertragtede kunstnere</h2>
     <div class="popularfestivals">
       <img src="/static/img/mekdes.jpg" alt="Roskilde festival" height="auto" width="75px">
       <img src="/static/img/rapman.jpg" alt="Northside" height="auto" width="75px">
@@ -94,15 +90,25 @@
       <img src="/static/img/saveus.jpg" alt="Skive Festival" height="auto" width="75px">
       <img src="/static/img/marley.jpg" alt="Grøn koncert" height="auto" width="75px">
       <img src="/static/img/boyband.jpg" alt="Distortion" height="auto" width="75px">
-      <img src="/static/img/marsboiis.jpg" alt="Spot Festival" height="auto" width="75px"> -->
+      <img src="/static/img/marsboiis.jpg" alt="Spot Festival" height="auto" width="75px">
 
 
+    </div> 
+
+
+    <!-- Flickity HTML init -->
+    <div class="carousel popularfestivals" data-flickity='{ "wrapAround": true}' >
+      <div class="carousel-cell"><img src="/static/img/roskilde.png" alt="Roskilde festival"></div>
+      <div class="carousel-cell"><img src="/static/img/northside.png" alt="Northside"></div>
+      <div class="carousel-cell"><img src="/static/img/tinderbox.png" alt="Tinderbox"></div>
+      <div class="carousel-cell"><img src="/static/img/smukfest.png" alt="Smukfest"></div>
+      <div class="carousel-cell"><img src="/static/img/skive.png" alt="Skive Festival"></div>
+      <div class="carousel-cell"><img src="/static/img/groen.png" alt="Grøn koncert"></div>
+      <div class="carousel-cell"><img src="/static/img/Distortion.png" alt="Distortion"></div>
+  
     </div>
   </div>
 </div> 
-
-<footer>
-  <div class="container foots">
     <div class="row">
       <div class="twelve column">
         <div class="one-third column">
@@ -138,10 +144,6 @@
       </div>
     </div>
   </div>
-  </div>
-</footer>
-
-
 <script type="text/javascript">
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {

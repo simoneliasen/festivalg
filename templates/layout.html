@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="Festivalg giver en oversigt over den danske kunstenre og festivaller, så du lettere kan danne dig et overblik over de enkelte line-ups, og tage dit festivalg!">
   <!-- Css-->
+  <link rel="stylesheet" href="/static/css/flickity.css" media="screen">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/skeleton.css') }}">
@@ -20,6 +21,8 @@
   <!-- PWA Support -->
   <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
   <meta name="theme-color" content="#fb9d46"/>
+  <!-- Flickity for frontpage festival slider-->
+  <script src="/static/js/slideshow.js"></script>
   <!-- If title is declared, insert after name (ex. festivalg - artists -->
  
   {% if title %}

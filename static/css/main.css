@@ -31,26 +31,28 @@ body, html {
 }
 
 .herowrapper {
-  background:linear-gradient(0deg,rgba(251, 157, 70, 0.8),rgba(251, 157, 70, 0.8)),url('../gif/testbg.gif');
+  background:linear-gradient(0deg,rgba(251, 157, 70, 0.7),rgba(251, 157, 70, 0.7)),url('../gif/testbg.gif');
   background-size: cover;
-    height: auto;
+    height: 80%;
     padding: 0;
     margin: 0;
 }
 
-
 #logo {
-  padding-top: 20%;
+  padding-top: 30%;
   color: #2d3436;
   font-size: 90px;
   font-weight: 500;
   text-align: center;
   font-family: 'miss_rhinettaregular', sans-serif;
+  margin: 0;
 }
 
 #subtext {
   text-align: center;
+  font-weight: 600;
   font-size: 1.6rem;
+  margin-bottom: 15px;
 }
 
 form {
@@ -265,8 +267,22 @@ select {
 .artistpage {
   padding-top: 2.5rem !important;
   padding-bottom: 2.5rem !important;
-  width: 30% !important;
-  
-
   background-color: #006E5F;
+}
+
+.carousel-cell {
+  height: auto;
+}
+
+
+@media (max-width: 950px) {
+
+  .carousel-cell > img {
+    width: 50px;
+    height: auto;
+  }
+
+  .flickity-viewport {
+    height: 100px;
+  }
 }

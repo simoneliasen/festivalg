@@ -19,7 +19,8 @@ class FestivalScraper():
             artistlist = [next(artist.stripped_strings), 'Roskilde Festival']
             self.artists.append(artistlist) 
   
-    #Artists from smukfest
+    #Artists from smukfest --Currently not active 
+    #https://www.smukfest.dk/musik/kunstnere-2020
     def smukfestscraper(self):
         content = requests.get('https://www.smukfest.dk/musik/spilleplan-2019')
         soup = BeautifulSoup(content.text, 'html.parser')
@@ -73,7 +74,7 @@ FestivalScraper.roskildescraper()
 FestivalScraper.smukfestscraper()
 SpotifyData.getdata(FestivalScraper)
 
-#Drops former db and initalizes new one (momentarily until site is more stable)
+#Drops former db and initalizes new one (momentarily until site is more stable) (difference betweeen old and new db could be "new artists" --> Could be a feature)
 db.drop_all()
 db.create_all()
 

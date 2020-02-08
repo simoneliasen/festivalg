@@ -2,19 +2,22 @@
 {% block content %}
 
 
-<a href="{{ url_for('home') }}"> Tilbage til forsiden </a>
-<div class="container">
-  <!-- Festival name, Image date-->
-  <br><br>
 
+<div class="container">
+  
+<br>
+<br>
   <center>
-    <img src="../static/img/smukfest.png">
-    <h1><b> {% print(search_input) %} </b></h1>
+    <img src="../static/img/roskilde.png">
+    <br>
+
+    <!-- <h1><b> {% print(search_input) %} </b></h<1> -->
+      <br>
 
     <p><b> 7-9 August 2020</b></p>
 
     <!-- Festival description -->
-    <p>Smukfest, også kendt som Skanderborg Festival eller Danmarks Smukkeste Festival, er en dansk musikfestival som
+    <p style="font-size: 20px;">Smukfest, også kendt som Skanderborg Festival eller Danmarks Smukkeste Festival, er en dansk musikfestival som
       afholdes hver sommer i anden weekend af august i Skanderborg under temaet "Musik & Bøgetræer".
 
       Musikken og diverse happenings foregår under bøgetræer og ved nærliggende søer og deraf navnet "Danmarks Smukkeste
@@ -27,25 +30,86 @@
       ideen til den første festval blev skabt den 5. juli 1979 – på Walthers 400 års fødselsdag.</p>
 
     <!--  tickets -->
+    <a href="{{ url_for('home') }}" class="button">TILBAGE TIL FORSIDEN</a>
     <a href="https://smukshop.dk/" class="button">KØB BILLET</a>
 
 
     <br><br><br>
-    <h3><b> Hvem spiller på {% print(search_input) %} ?</b></h3>
+    <!--<h3><b> Hvem spiller på {% print(search_input) %} ?</b></h3>  -->
+    </center>
 </div>
-</center>
+
+<style>
+
+  html, body {
+    background-color:#006E5F;
+    color: #fb9d46;
+  }
+  .button {
+    color: #fb9d46;
+    background-color: #2d3436;
+  }
+  .three.columns.artists {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    display: inline-block;
+    border-radius: 5px;
+    height: 400px;
+    width: 300px;
+    margin: 5px;
+    background-color: #2d3436;
+    color: #dfe6e9;
+  }
+  
+  .three.columns.artists:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    color:#2d3436;
+    background-color:#dfe6e9;
+  }
+  
+  img {
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .textbox {
+    padding: 1px 8px;
+    min-height: 10px;
+  }
+
+.u-max-full-width {
+  width: 300px;
+  height: 300px;
+}
+  
+</style>
+
+
+<script>
+  function myFunction(event) {
+    var x = event.target;
+    let lengthy = x.innerHTML.length;
+    console.log(lengthy);
+    console.log(event.target.innerHTML);
+  }
+  </script>
+
+  <!--THOM YORKE TOMORR-->
 
 <!-- Artist grid -->
-<div class="container">
   {% for data in festival_data %}
-  <div class="artistwrapper">
+  <div class="artistwrapper"> <!-- (onclick <- query data.name and make a modal with data-->
     <div class="three columns artists">
-      <p id="artistname" style="text-shadow: 2px 2px #797979;"><b> {% print(data.name) %} </b></p>
+      <!-- <p id="artistname" style="text-shadow: 2px 2px #797979;"><b> {% print(data.name) %} </b></p>   -->
       <img class="u-max-full-width" src="{% print(data.img) %}" width="200px" height="200px">
+      <div class="textbox">
+       <b><p id="artistName" style="font-size: 20px" onclick="myFunction(event)">{% print(data.name) %}</p></b> 
+      </div>
     </div>
   </div>
   {% endfor %}
 </div>
-</div>
+
+<!-- Fix  size of cards where artists have long names-->
+<!-- Enable modal popup  on artist card click -->
 
 {% endblock content %}
