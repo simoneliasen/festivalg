@@ -12,7 +12,9 @@
 
 /* 1. GENERAL */
 body, html {
-  background: #fb9d46;
+  
+/*debugging
+background: #fb9d46; */
   width: 100%;
   height: 100%;
 }
@@ -31,7 +33,7 @@ body, html {
 }
 
 .herowrapper {
-  background:linear-gradient(0deg,rgba(251, 157, 70, 0.7),rgba(251, 157, 70, 0.7)),url('../gif/testbg.gif');
+/*background:linear-gradient(0deg,rgba(251, 157, 70, 0.7),rgba(251, 157, 70, 0.7)),url('../gif/testbg.gif');*/
   background-size: cover;
     height: 80%;
     padding: 0;

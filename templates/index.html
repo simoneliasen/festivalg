@@ -13,8 +13,8 @@
         </div>
       </div>
     </div>
-  </header>
--->
+  </header>-->
+
   <div class="herowrapper">
     <div class="container homepage">
       <h1 id="logo"> Festivalg </h1>
@@ -54,33 +54,43 @@ var flkty = new Flickity( '.main-carousel', {
   // options
 });
       </script>
+
+
+      <script>
+        // Random Bg image onload
+        var images = [], 
+        index = 0;
+        
+        images[0] = "static/gif/1.gif";
+        images[1] = "static/gif/2.gif";
+        images[2] = "static/gif/3.gif";
+        images[3] = "static/gif/4.gif";
+        images[4] = "static/gif/5.gif";
+        images[5] = "static/gif/6.gif";
+        images[6] = "static/gif/7.gif";
+        images[7] = "static/gif/8.gif";
+        images[8] = "static/gif/9.gif";
+        
+        index = Math.floor(Math.random() * images.length)
+        document.getElementsByClassName('herowrapper')[0].style.background = "linear-gradient(0deg,rgba(251, 157, 70, 0.7),rgba(251, 157, 70, 0.7)),url('"+images[index]+"')"; // <-- not working?? 
+      </script>
+
       <p id="subsubtext"> Se hvilke kunstnere der kommer til festivaller, samt. undersøg mere om dem </p>
     </div>
   </div>
 </div>
+<style>
+  .herowrapper {
+    background-repeat: no-repeat!important;
+background-size: 100% 100% !important;
+object-fit: cover !important;
+  }
+  </style>
 
-<!-- Popular festivals section -->
-<!--
-<div class="festivalswrapper">
 
-  <!-- Insert slider
-    <div class="popularfestivals">
-      <img src="/static/img/roskilde.png" alt="Roskilde festival" height="auto" width="62.5px">
-      <img src="/static/img/northside.png" alt="Northside" height="auto" width="125px">
-      <img src="/static/img/tinderbox.png" alt="Tinderbox" height="auto" width="156.25px">
-      <img src="/static/img/smukfest.png" alt="Smukfest" height="auto" width="62.5px">
-      <img src="/static/img/skive.png" alt="Skive Festival" height="auto" width="62.5px">
-      <img src="/static/img/groen.png" alt="Grøn koncert" height="auto" width="62.5px">
-      <img src="/static/img/Distortion.png" alt="Distortion" height="auto" width="62.5px">
-    </div>
-  </div>
-</div>
--->
 <!-- Popular artists selection  (could also be an img and a story)
 <div class="artistwrap">
   <div class="container">
-
-
      <h2 class="subheadingwrap">Eftertragtede kunstnere</h2>
     <div class="popularfestivals">
       <img src="/static/img/mekdes.jpg" alt="Roskilde festival" height="auto" width="75px">
@@ -91,10 +101,7 @@ var flkty = new Flickity( '.main-carousel', {
       <img src="/static/img/marley.jpg" alt="Grøn koncert" height="auto" width="75px">
       <img src="/static/img/boyband.jpg" alt="Distortion" height="auto" width="75px">
       <img src="/static/img/marsboiis.jpg" alt="Spot Festival" height="auto" width="75px">
-
-
     </div> 
-
 
     <!-- Flickity HTML init -->
     <div class="carousel popularfestivals" data-flickity='{ "wrapAround": true}' >

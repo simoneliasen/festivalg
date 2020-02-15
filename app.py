@@ -5,8 +5,9 @@ from sqlalchemy.orm import sessionmaker
 import json
 import os
 import psycopg2
+
 #Add for local development
-#import OpenSSL
+import OpenSSL
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
@@ -41,52 +42,59 @@ def sw():
     return app.send_static_file('sw.js')
 
 # Home page
+#Iterate over all elements to get recommendations in searchbar
 @app.route('/', methods=['GET'])
 def home():
     momentarystorage = []
-
     artists = Artist.query.all()
     for artist in artists:
         momentarystorage.append(artist.name)
         momentarystorage.append(artist.festival)
-
     distinctvalues = set(momentarystorage)
     distinctlist = list(distinctvalues)
     artistnames = (json.dumps(distinctlist))
-
     return render_template('index.html', artistnames=artistnames)
  
 
 
 
 
-# Artist page
+#Redirect to "artist/<artistname>" or "festival/<festivalname>" based on the category of "search_input"
 @app.route('/artist', methods=["GET", "POST"])
 def artist():
     if request.method == "GET":
               return "Please submit the form instead."
     else:
+        #Search input from search bar
         search_input = request.form.get("search")
+
+        #Get artist array
         artist_data = Artist.query.filter_by(name=search_input)
+
+        #Get festival array
         festival_data = Artist.query.filter_by(festival=search_input)
 
+        #Iterate through artist data to see if it's an artist
         for data in artist_data:
             if data in artist_data:
-                
                 return render_template("artist.html", search_input = search_input, artist_data = artist_data)
 
+        # Iteration through festival data for festival name if data not in artist data
         for element in festival_data:
             if element in festival_data:
                 return render_template("festival.html", search_input = search_input, festival_data = festival_data)
-        
+
+        #If no match in db error
         else:
             message = "No artist or festival matched your input"
             return message
     
 
+
+
+
 if __name__ == '__main__':
     #app.run(debug=True)
-
     #Add for local development
     app.run(debug=True, ssl_context='adhoc')
 

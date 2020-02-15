@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
 
-
 <!-- Festival data: Automated in future version-->
 <div class="container">
 <br>
@@ -110,9 +109,11 @@
   <!-- Modal -->
   <div id="{{data.name}}" class="w3-modal">
     <div class="w3-modal-content">
+
       <div class="w3-container">
         <span onclick="document.getElementById('{{data.name}}').style.display='none'" style="color:black" class="w3-button w3-display-topright">&times;</span>
         <center><p id="modalName">{% print(data.name) %}</p></center>
+
         <img src="{% print(data.img) %}" width="300px" height="300px" id="modalimg">
         {% if data.uri != "None": %}
       <iframe src="{% print(data.uri.replace("/artist/", "/embed/artist/")) %}" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -121,6 +122,7 @@
       {% print('Kontakt os hvis der er sket en fejl') %}
     {% endif %}
       </div>
+
     </div>
   </div>
   {% endfor %}
