@@ -223,7 +223,6 @@ footer {
 
 
 /* FESTIVAL PAGE */
-
 .three.columns.artists {
   text-align: center;
   position: relative;
@@ -262,13 +261,13 @@ select {
   }
 
 }
-
-
+/*
 .artistpage {
   padding-top: 2.5rem !important;
   padding-bottom: 2.5rem !important;
   background-color: #006E5F;
 }
+*/
 
 .carousel-cell {
   height: auto;

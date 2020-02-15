@@ -2,21 +2,15 @@
 {% block content %}
 
 
-
+<!-- Festival data: Automated in future version-->
 <div class="container">
-  
 <br>
 <br>
   <center>
     <img src="../static/img/roskilde.png">
     <br>
-
-    <!-- <h1><b> {% print(search_input) %} </b></h<1> -->
-      <br>
-
+    <br>
     <p><b> 7-9 August 2020</b></p>
-
-    <!-- Festival description -->
     <p style="font-size: 20px;">Smukfest, også kendt som Skanderborg Festival eller Danmarks Smukkeste Festival, er en dansk musikfestival som
       afholdes hver sommer i anden weekend af august i Skanderborg under temaet "Musik & Bøgetræer".
 
@@ -28,19 +22,16 @@
 
       Festivalens maskot er FestiWalther, der er en musikglad skovtrold født 5. juli 1579 i Skanderborgs bøgeskove, og
       ideen til den første festval blev skabt den 5. juli 1979 – på Walthers 400 års fødselsdag.</p>
-
-    <!--  tickets -->
     <a href="{{ url_for('home') }}" class="button">TILBAGE TIL FORSIDEN</a>
     <a href="https://smukshop.dk/" class="button">KØB BILLET</a>
-
-
     <br><br><br>
-    <!--<h3><b> Hvem spiller på {% print(search_input) %} ?</b></h3>  -->
     </center>
 </div>
 
-<style>
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
   html, body {
     background-color:#006E5F;
     color: #fb9d46;
@@ -81,35 +72,59 @@
   height: 300px;
 }
   
+#artistName {
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+
+/* Modal Styling */
+.w3-modal-content {
+  width: 332px;
+}
+.w3-container {
+  background-color: orange;
+}
+#modalimg {
+  display:inherit;
+}
+
+#modalName {
+  color:black;
+}
 </style>
 
 
-<script>
-  function myFunction(event) {
-    var x = event.target;
-    let lengthy = x.innerHTML.length;
-    console.log(lengthy);
-    console.log(event.target.innerHTML);
-  }
-  </script>
-
-  <!--THOM YORKE TOMORR-->
-
 <!-- Artist grid -->
   {% for data in festival_data %}
-  <div class="artistwrapper"> <!-- (onclick <- query data.name and make a modal with data-->
-    <div class="three columns artists">
-      <!-- <p id="artistname" style="text-shadow: 2px 2px #797979;"><b> {% print(data.name) %} </b></p>   -->
-      <img class="u-max-full-width" src="{% print(data.img) %}" width="200px" height="200px">
+  <div class="artistwrapper {{ data.name }}" onclick="document.getElementById('{{data.name}}').style.display='block'" class="w3-button w3-black"> 
+    <div class="three columns artists" onclick="document.getElementById('{{data.name}}').style.display='block'" class="w3-button w3-black">
+      <img class="u-max-full-width" src="{% print(data.img) %}" width="200px" height="200px" onclick="document.getElementById('{{data.name}}').style.display='block'" class="w3-button w3-black">
       <div class="textbox">
-       <b><p id="artistName" style="font-size: 20px" onclick="myFunction(event)">{% print(data.name) %}</p></b> 
+       <p id="artistName">{% print(data.name) %}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="{{data.name}}" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('{{data.name}}').style.display='none'" style="color:black" class="w3-button w3-display-topright">&times;</span>
+        <center><p id="modalName">{% print(data.name) %}</p></center>
+        <img src="{% print(data.img) %}" width="300px" height="300px" id="modalimg">
+        {% if data.uri != "None": %}
+      <iframe src="{% print(data.uri.replace("/artist/", "/embed/artist/")) %}" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    {% else: %}
+      {% print('Kunne ikke finde musik fra denne kunstner på spotify') %}
+      {% print('Kontakt os hvis der er sket en fejl') %}
+    {% endif %}
       </div>
     </div>
   </div>
   {% endfor %}
-</div>
 
-<!-- Fix  size of cards where artists have long names-->
-<!-- Enable modal popup  on artist card click -->
+
 
 {% endblock content %}

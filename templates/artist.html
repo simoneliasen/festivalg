@@ -13,16 +13,16 @@
     <!-- Image -->
     <img src="{% print(data.img) %}" width="300px" height="300px">
     <br><br>
+
     <!-- Spotify URI (needs formating) -->
     {% if data.uri != "None": %}
-    <iframe src="{% print(data.uri.replace("/artist/", "/embed/artist/")) %}" width="300" height="400" frameborder="0"
-      allowtransparency="true" allow="encrypted-media"></iframe>
+      <iframe src="{% print(data.uri.replace("/artist/", "/embed/artist/")) %}" width="300" height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     {% else: %}
-    {% print('Kunne ikke finde musik fra denne kunstner på spotify') %}
-    <br>
-    {% print('Kontakt os hvis der er sket en fejl') %}
-
+      {% print('Kunne ikke finde musik fra denne kunstner på spotify') %}
+      {% print('Kontakt os hvis der er sket en fejl') %}
     {% endif %}
+
+
     <br><br>
     <!-- Festival -->
     <p> <b>Spiller på: </b></p>

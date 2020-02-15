@@ -8,7 +8,6 @@ import psycopg2
 #Add for local development
 #import OpenSSL
 
-
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -37,22 +36,27 @@ def before_request():
 def page_not_found(error):
    return render_template('index.html', title = '404'), 404
 
+@app.route('/sw.js', methods=['GET'])
+def sw():
+    return app.send_static_file('sw.js')
+
 # Home page
 @app.route('/', methods=['GET'])
 def home():
     momentarystorage = []
+
     artists = Artist.query.all()
     for artist in artists:
         momentarystorage.append(artist.name)
         momentarystorage.append(artist.festival)
+
     distinctvalues = set(momentarystorage)
     distinctlist = list(distinctvalues)
     artistnames = (json.dumps(distinctlist))
+
     return render_template('index.html', artistnames=artistnames)
  
-@app.route('/sw.js', methods=['GET'])
-def sw():
-    return app.send_static_file('sw.js')
+
 
 
 
@@ -65,12 +69,16 @@ def artist():
         search_input = request.form.get("search")
         artist_data = Artist.query.filter_by(name=search_input)
         festival_data = Artist.query.filter_by(festival=search_input)
+
         for data in artist_data:
             if data in artist_data:
+                
                 return render_template("artist.html", search_input = search_input, artist_data = artist_data)
+
         for element in festival_data:
             if element in festival_data:
                 return render_template("festival.html", search_input = search_input, festival_data = festival_data)
+        
         else:
             message = "No artist or festival matched your input"
             return message
@@ -79,7 +87,7 @@ def artist():
 if __name__ == '__main__':
     #app.run(debug=True)
 
-#Add for local development
+    #Add for local development
     app.run(debug=True, ssl_context='adhoc')
 
 
